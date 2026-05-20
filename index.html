@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="杨佩鑫的机器人算法作品集：规划控制、状态估计、强化学习、SLAM 与具身智能研究兴趣。" />
+  <meta name="description" content="杨佩鑫的机器人算法作品集：规划控制、状态估计、强化学习、SLAM、语义 LiDAR 全局定位与具身智能研究兴趣。" />
   <title>杨佩鑫 | Robotics Algorithm Portfolio</title>
   <style>
     :root {
@@ -15,7 +15,8 @@
       --primary: #0f766e;
       --primary-dark: #115e59;
       --accent: #2563eb;
-      --tag: #eef6f6;
+      --soft: #eef6f6;
+      --soft-blue: #eff6ff;
       --shadow: 0 20px 55px rgba(15, 23, 42, 0.08);
       --radius: 22px;
     }
@@ -146,7 +147,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-bottom: 28px;
+      margin-top: 18px;
     }
 
     .btn {
@@ -154,7 +155,7 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 12px 18px;
+      padding: 11px 16px;
       border-radius: 999px;
       font-weight: 800;
       font-size: 14px;
@@ -243,7 +244,7 @@
 
     .section-desc {
       color: var(--muted);
-      max-width: 620px;
+      max-width: 650px;
       font-size: 15px;
     }
 
@@ -263,6 +264,10 @@
 
     .card.featured {
       grid-column: span 2;
+    }
+
+    .card.wide {
+      grid-column: span 3;
     }
 
     .card h3 {
@@ -317,10 +322,67 @@
       display: inline-flex;
       padding: 6px 10px;
       border-radius: 999px;
-      background: var(--tag);
+      background: var(--soft);
       color: var(--primary-dark);
       font-size: 12px;
       font-weight: 800;
+    }
+
+    .tag.blue {
+      background: var(--soft-blue);
+      color: #1d4ed8;
+    }
+
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      color: #334155;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .project-link:hover {
+      color: var(--primary-dark);
+      border-color: rgba(15, 118, 110, 0.28);
+    }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .metric {
+      padding: 14px;
+      border: 1px solid var(--line);
+      background: #f8fafc;
+      border-radius: 16px;
+    }
+
+    .metric strong {
+      display: block;
+      color: var(--primary-dark);
+      font-size: 20px;
+      line-height: 1.2;
+      margin-bottom: 3px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
     }
 
     .timeline {
@@ -349,6 +411,10 @@
       font-size: 20px;
       margin-bottom: 6px;
       letter-spacing: -0.03em;
+    }
+
+    .timeline-item p {
+      color: var(--muted);
     }
 
     .skills {
@@ -422,11 +488,13 @@
       .hero-grid,
       .cards,
       .skills,
-      .contact {
+      .contact,
+      .metric-row {
         grid-template-columns: 1fr;
       }
 
-      .card.featured {
+      .card.featured,
+      .card.wide {
         grid-column: span 1;
       }
 
@@ -466,10 +534,10 @@
     <header class="hero">
       <div class="container hero-grid">
         <div>
-          <div class="eyebrow"><span class="dot"></span> Robotics · Planning & Control · RL</div>
+          <div class="eyebrow"><span class="dot"></span> Robotics · Planning & Control · RL · Semantic SLAM</div>
           <h1>杨佩鑫<br /><span class="gradient-text">Robotics Algorithm Engineer</span></h1>
           <p>
-            本科就读于西南石油大学通信工程，长期参与机器人系统开发，方向聚焦机器人规划控制、状态估计、SLAM、MPC 与强化学习 sim2real。未来希望研究面向真实机器人的 world-model-based RL、VLA/具身智能决策与学习控制。
+            本科就读于西南石油大学通信工程，长期参与机器人系统开发，方向聚焦机器人规划控制、状态估计、SLAM、NMPC 与强化学习 sim2real。未来希望研究面向真实机器人的 world-model-based RL、VLA/具身智能决策与学习控制。
           </p>
           <div class="actions">
             <a class="btn primary" href="assets/Yang_Peixin_Resume.pdf" target="_blank" rel="noreferrer">Download Resume</a>
@@ -483,7 +551,7 @@
           <div class="stat-grid">
             <div class="stat"><strong>RoboMaster</strong><span>2025 区域赛全国一等奖 / 超级对抗赛全国二等奖</span></div>
             <div class="stat"><strong>&lt;5ms</strong><span>复杂环境下 3D 安全走廊构建耗时</span></div>
-            <div class="stat"><strong>100×</strong><span>GPU 并行语义描述子全局构建加速</span></div>
+            <div class="stat"><strong>96.64%+</strong><span>SGP_LOC 长序列全局定位成功率</span></div>
             <div class="stat"><strong>1ms</strong><span>STM32H7 单次策略推理部署</span></div>
           </div>
         </aside>
@@ -515,8 +583,8 @@
           </article>
           <article class="card">
             <h3>Learning-based Control</h3>
-            <p>结合 MPC、LQR、动力学建模和 PPO 等方法，研究可部署、可解释、可约束的机器人控制策略。</p>
-            <div class="tags"><span class="tag">MPC</span><span class="tag">PPO</span><span class="tag">Sim2Real</span></div>
+            <p>结合 NMPC、LQR、动力学建模和 PPO 等方法，研究可部署、可解释、可约束的机器人控制策略。</p>
+            <div class="tags"><span class="tag">NMPC</span><span class="tag">PPO</span><span class="tag">Sim2Real</span></div>
           </article>
         </div>
       </div>
@@ -529,20 +597,23 @@
             <div class="section-kicker">Selected Projects</div>
             <h2>作品集</h2>
           </div>
-          <p class="section-desc">以下项目覆盖自主导航、轮足机器人强化学习控制、语义 SLAM 与人形机器人 PNC。</p>
+          <p class="section-desc">以下项目覆盖人形机器人 PNC、自主导航、轮足机器人强化学习控制与语义 LiDAR 全局定位。</p>
         </div>
 
         <div class="cards">
           <article class="card featured">
-            <div class="meta">RoboMaster 2025 · 自主导航机器人 · 2024/09 - 2025/05</div>
-            <h3>基于 MID360 多线激光雷达感知的自主导航机器人</h3>
+            <div class="meta">Humanoid Robot PNC · NMPC Hyperplane · 2026/01 - Present</div>
+            <h3>人形机器人规划控制算法研发</h3>
             <ul class="bullets">
-              <li>负责多传感器融合定位，设计 ESKF 紧耦合框架，融合轮速计预测与激光雷达扫描匹配观测。</li>
-              <li>采用 iVOX + 哈希映射进行 O(N) 近邻搜索，结合改进 JPS 构建 3D 安全走廊，复杂环境下耗时小于 5ms。</li>
-              <li>基于 MINCO 轨迹参数化与 L-BFGS 非线性优化，生成高阶连续、无碰撞平滑轨迹。</li>
-              <li>基于底盘动力学建模设计 LMPC 控制器，实现高速轨迹精准跟踪。</li>
+              <li>面向人形机器人局部避障与轨迹跟踪，构建 Lattice 局部规划、SFC 安全走廊与 NMPC 控制闭环。</li>
+              <li>基于栅格采样生成多候选轨迹，通过碰撞检测和代价评估选择最优路径。</li>
+              <li>采用 OBB 有向包围盒收缩算法，在局部坐标系下生成可通行矩形约束区域。</li>
+              <li>基于 Acados 开发实时 NMPC 控制器，引入超平面线性约束处理多障碍物避障。</li>
             </ul>
-            <div class="tags"><span class="tag">ROS</span><span class="tag">ESKF</span><span class="tag">JPS</span><span class="tag">MINCO</span><span class="tag">LMPC</span></div>
+            <div class="tags"><span class="tag">Humanoid Robot</span><span class="tag">Lattice Planner</span><span class="tag">SFC</span><span class="tag">Acados</span><span class="tag">NMPC</span></div>
+            <div class="project-links">
+              <a class="project-link" href="https://github.com/PeiXinYang-IST/NMPC_hyperplane" target="_blank" rel="noreferrer">GitHub Repository</a>
+            </div>
           </article>
 
           <article class="card">
@@ -556,27 +627,40 @@
             <div class="tags"><span class="tag">MPC</span><span class="tag">PPO</span><span class="tag">Isaac Gym</span><span class="tag">MuJoCo</span></div>
           </article>
 
-          <article class="card">
-            <div class="meta">Semantic SLAM · 2025/06 - 2025/10</div>
-            <h3>大范围场景下的语义 SLAM 鲁棒长时定位</h3>
+          <article class="card featured">
+            <div class="meta">RoboMaster 2025 · MID360 LiDAR Navigation · 2024/09 - 2025/05</div>
+            <h3>基于 MID360 多线激光雷达感知的自主导航机器人</h3>
             <ul class="bullets">
-              <li>提出帧间信息与 one-shot 定位结合的全局语义定位框架，提升纯 one-shot 方案鲁棒性。</li>
-              <li>使用 SegNet4D 语义分割，设计全局三角描述符并进行 GPU 并行构建。</li>
-              <li>结合因子图优化，在无 IMU 纯激光点云条件下实现鲁棒定位。</li>
+              <li>作为核心算法负责人完成 RoboMaster 哨兵自主导航系统，覆盖定位、搜索、轨迹优化与底盘控制。</li>
+              <li>设计 ESKF 紧耦合融合框架，融合轮速计预测与激光雷达扫描匹配观测。</li>
+              <li>采用 iVOX + 哈希映射进行 O(N) 近邻搜索，结合改进 JPS 构建 3D 安全走廊，复杂环境下耗时小于 5ms。</li>
+              <li>基于 MINCO 轨迹参数化与 L-BFGS 非线性优化生成高阶连续轨迹，并用 LMPC 实现高速跟踪。</li>
             </ul>
-            <div class="tags"><span class="tag">C++</span><span class="tag">GPU</span><span class="tag">Factor Graph</span><span class="tag">SLAM</span></div>
+            <div class="tags"><span class="tag">RoboMaster</span><span class="tag">MID360</span><span class="tag">ESKF</span><span class="tag">JPS</span><span class="tag">MINCO</span><span class="tag">LMPC</span></div>
+            <div class="project-links">
+              <a class="project-link" href="https://github.com/PeiXinYang-IST/IST_2025_SENTRY_" target="_blank" rel="noreferrer">GitHub Repository</a>
+            </div>
           </article>
 
-          <article class="card featured">
-            <div class="meta">Humanoid Robot PNC · 北京橡树清溪科技公司 · 2026/01 - Present</div>
-            <h3>人形机器人规划控制算法研发</h3>
+          <article class="card wide">
+            <div class="meta">Research Project · SGP_LOC · Semantic Graph-Based Persistent LiDAR Global Localization</div>
+            <h3>Semantic Graph-Based Persistent LiDAR Global Localization in Urban Environments</h3>
+            <p>
+              SGP_LOC 是一个面向 GNSS 失效城市驾驶场景的持久化语义 LiDAR 全局定位框架。与直接发布 one-shot 语义匹配结果不同，系统将 one-shot 位姿视为延迟到达的全局先验候选：前端通过语义 ICP 连续维护里程计，后端对候选位姿进行局部粒子验证、延迟补偿、轨迹一致性门限检查，并在通过验证后融合进因子图，从而减少重复语义结构、遮挡和分割噪声导致的大偏航与平移尖峰。
+            </p>
+            <div class="metric-row">
+              <div class="metric"><strong>96.64% - 100%</strong><span>MulRan / HeLiPR 长序列成功率</span></div>
+              <div class="metric"><strong>27.02° → 4.38°</strong><span>Roundabout 最大 yaw 误差降低</span></div>
+              <div class="metric"><strong>32.9 ms</strong><span>SGP_LOC 总计中位运行时间</span></div>
+              <div class="metric"><strong>2.31 GB</strong><span>38 分钟运行峰值内存</span></div>
+            </div>
             <ul class="bullets">
-              <li>作为核心算法负责人设计人形机器人 PNC 系统，覆盖局部规划、安全走廊与实时控制。</li>
-              <li>基于栅格采样生成多候选轨迹，通过碰撞检测和代价评估选择最优路径。</li>
-              <li>采用 OBB 有向包围盒收缩算法生成可通行矩形约束区域。</li>
-              <li>基于 Acados 开发 MPC 实时控制器，引入超平面线性约束处理多障碍物避障。</li>
+              <li>将语义 one-shot 定位从“单帧位姿输出”重构为“异步全局先验来源”，提升长序列定位稳定性。</li>
+              <li>设计基于粒子的局部语义验证器，使用同标签语义关联、判别性类别筛选和弱垂直残差评估候选可信度。</li>
+              <li>根据验证置信度构造动态先验协方差，并通过缓存里程计传播到当前时刻后进行因子图融合。</li>
+              <li>在 MulRan 与 HeLiPR 数据集上验证，系统在重复城市场景中保持连续位姿流并显著抑制大方向外点。</li>
             </ul>
-            <div class="tags"><span class="tag">PNC</span><span class="tag">Lattice Planner</span><span class="tag">SFC</span><span class="tag">Acados</span><span class="tag">MPC</span></div>
+            <div class="tags"><span class="tag blue">Semantic SLAM</span><span class="tag blue">LiDAR Localization</span><span class="tag blue">Factor Graph</span><span class="tag blue">Particle Verification</span><span class="tag blue">Urban Driving</span></div>
           </article>
         </div>
       </div>
@@ -604,7 +688,7 @@
             <div class="time">2026/01 - Present</div>
             <div>
               <h3>北京橡树清溪科技公司 · PNC 工程师</h3>
-              <p>参与人形机器人规划控制系统研发，负责 Lattice 局部规划、SFC 安全走廊与 MPC 实时控制器。</p>
+              <p>参与人形机器人规划控制系统研发，负责 Lattice 局部规划、SFC 安全走廊与 NMPC 实时控制器。</p>
             </div>
           </div>
 
@@ -635,11 +719,11 @@
           </div>
           <div class="skill-card">
             <h3>Control & Optimization</h3>
-            <p>MPC, LQR, PID, Lagrange / Newton-Euler dynamics, convex optimization, BFGS, L-BFGS</p>
+            <p>NMPC, MPC, LQR, PID, Lagrange / Newton-Euler dynamics, convex optimization, BFGS, L-BFGS</p>
           </div>
           <div class="skill-card">
-            <h3>State Estimation</h3>
-            <p>Bayesian filtering, ESKF, multi-sensor fusion, factor graph optimization, LiDAR odometry</p>
+            <h3>State Estimation & SLAM</h3>
+            <p>Bayesian filtering, ESKF, multi-sensor fusion, factor graph optimization, LiDAR odometry, semantic SLAM</p>
           </div>
           <div class="skill-card">
             <h3>Programming & AI</h3>
@@ -655,7 +739,7 @@
           <div>
             <h2>Let’s build robust embodied intelligence.</h2>
             <p>
-              欢迎交流机器人规划控制、状态估计、强化学习、world model、VLA 与具身智能方向的研究和项目合作。
+              欢迎交流机器人规划控制、状态估计、语义 SLAM、强化学习、world model、VLA 与具身智能方向的研究和项目合作。
             </p>
           </div>
           <div class="actions">
