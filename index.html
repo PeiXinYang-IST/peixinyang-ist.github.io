@@ -359,13 +359,18 @@
 
     .media-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
       margin-top: 18px;
+      align-items: start;
     }
 
     .media-grid.single {
       grid-template-columns: 1fr;
+    }
+
+    .media-grid.center {
+      justify-items: center;
     }
 
     .media-card {
@@ -375,11 +380,25 @@
       background: #f8fafc;
     }
 
-    .media-card video,
-    .media-card img {
+    .media-card.horizontal video,
+    .media-card.horizontal img {
       display: block;
       width: 100%;
       aspect-ratio: 16 / 9;
+      object-fit: cover;
+      background: #0f172a;
+    }
+
+    .media-card.portrait {
+      width: min(100%, 330px);
+      margin: 0 auto;
+    }
+
+    .media-card.portrait video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      max-height: 560px;
       object-fit: cover;
       background: #0f172a;
     }
@@ -616,10 +635,10 @@
               <li>采用 OBB 有向包围盒收缩算法，在局部坐标系下生成可通行矩形约束区域。</li>
               <li>基于 Acados 开发实时 NMPC 控制器，引入超平面线性约束处理多障碍物避障。</li>
             </ul>
-            <div class="media-grid single">
-              <div class="media-card">
+            <div class="media-grid single center">
+              <div class="media-card portrait">
                 <video src="pic/Planner.mp4" controls muted playsinline preload="metadata"></video>
-                <div class="media-caption">Planner demo</div>
+                <div class="media-caption">Planner demo · portrait video</div>
               </div>
             </div>
             <div class="tags"><span class="tag">Humanoid Robot</span><span class="tag">Lattice Planner</span><span class="tag">SFC</span><span class="tag">Acados</span><span class="tag">NMPC</span></div>
@@ -628,7 +647,7 @@
             </div>
           </article>
 
-          <article class="card">
+          <article class="card featured">
             <div class="meta">Legged Robotics · 2025/10 - 2026/01</div>
             <h3>双轮足机器人强化学习控制</h3>
             <ul class="bullets">
@@ -637,11 +656,11 @@
               <li>完成 Isaac Gym 训练、MuJoCo sim2sim 与 STM32H7 端侧部署，单次推理约 1ms。</li>
             </ul>
             <div class="media-grid">
-              <div class="media-card">
+              <div class="media-card horizontal">
                 <video src="pic/wheel_leg.mp4" controls muted playsinline preload="metadata"></video>
                 <div class="media-caption">Simulation / policy rollout</div>
               </div>
-              <div class="media-card">
+              <div class="media-card horizontal">
                 <video src="pic/real.mp4" controls muted playsinline preload="metadata"></video>
                 <div class="media-caption">Real-world deployment</div>
               </div>
@@ -659,7 +678,7 @@
               <li>基于 MINCO 轨迹参数化与 L-BFGS 非线性优化生成高阶连续轨迹，并用 LMPC 实现高速跟踪。</li>
             </ul>
             <div class="media-grid single">
-              <div class="media-card">
+              <div class="media-card horizontal">
                 <video src="pic/nav.mp4" controls muted playsinline preload="metadata"></video>
                 <div class="media-caption">Real robot navigation demo</div>
               </div>
@@ -675,7 +694,7 @@
             <div class="meta">Research Project · SGP_LOC</div>
             <h3>Semantic Graph-Based Persistent LiDAR Global Localization in Urban Environments</h3>
             <div class="media-grid single">
-              <div class="media-card">
+              <div class="media-card horizontal">
                 <img src="pic/SGP_loc.png" alt="SGP_LOC project preview" />
                 <div class="media-caption">Project preview</div>
               </div>
