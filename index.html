@@ -357,29 +357,35 @@
       border-color: rgba(15, 118, 110, 0.28);
     }
 
-    .metric-row {
+    .media-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
       margin-top: 18px;
     }
 
-    .metric {
-      padding: 14px;
+    .media-grid.single {
+      grid-template-columns: 1fr;
+    }
+
+    .media-card {
+      overflow: hidden;
       border: 1px solid var(--line);
+      border-radius: 18px;
       background: #f8fafc;
-      border-radius: 16px;
     }
 
-    .metric strong {
+    .media-card video,
+    .media-card img {
       display: block;
-      color: var(--primary-dark);
-      font-size: 20px;
-      line-height: 1.2;
-      margin-bottom: 3px;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      background: #0f172a;
     }
 
-    .metric span {
+    .media-caption {
+      padding: 9px 12px;
       color: var(--muted);
       font-size: 12px;
       font-weight: 700;
@@ -489,7 +495,7 @@
       .cards,
       .skills,
       .contact,
-      .metric-row {
+      .media-grid {
         grid-template-columns: 1fr;
       }
 
@@ -551,7 +557,7 @@
           <div class="stat-grid">
             <div class="stat"><strong>RoboMaster</strong><span>2025 区域赛全国一等奖 / 超级对抗赛全国二等奖</span></div>
             <div class="stat"><strong>&lt;5ms</strong><span>复杂环境下 3D 安全走廊构建耗时</span></div>
-            <div class="stat"><strong>96.64%+</strong><span>SGP_LOC 长序列全局定位成功率</span></div>
+            <div class="stat"><strong>NMPC</strong><span>超平面线性约束下的实时避障控制</span></div>
             <div class="stat"><strong>1ms</strong><span>STM32H7 单次策略推理部署</span></div>
           </div>
         </aside>
@@ -610,6 +616,12 @@
               <li>采用 OBB 有向包围盒收缩算法，在局部坐标系下生成可通行矩形约束区域。</li>
               <li>基于 Acados 开发实时 NMPC 控制器，引入超平面线性约束处理多障碍物避障。</li>
             </ul>
+            <div class="media-grid single">
+              <div class="media-card">
+                <video src="pic/Planner.mp4" controls muted playsinline preload="metadata"></video>
+                <div class="media-caption">Planner demo</div>
+              </div>
+            </div>
             <div class="tags"><span class="tag">Humanoid Robot</span><span class="tag">Lattice Planner</span><span class="tag">SFC</span><span class="tag">Acados</span><span class="tag">NMPC</span></div>
             <div class="project-links">
               <a class="project-link" href="https://github.com/PeiXinYang-IST/NMPC_hyperplane" target="_blank" rel="noreferrer">GitHub Repository</a>
@@ -624,6 +636,16 @@
               <li>设计 Dilated Res-TCN 替代 Kalman Filter 进行全身状态估计，结合 PPO 完成策略迭代。</li>
               <li>完成 Isaac Gym 训练、MuJoCo sim2sim 与 STM32H7 端侧部署，单次推理约 1ms。</li>
             </ul>
+            <div class="media-grid">
+              <div class="media-card">
+                <video src="pic/wheel_leg.mp4" controls muted playsinline preload="metadata"></video>
+                <div class="media-caption">Simulation / policy rollout</div>
+              </div>
+              <div class="media-card">
+                <video src="pic/real.mp4" controls muted playsinline preload="metadata"></video>
+                <div class="media-caption">Real-world deployment</div>
+              </div>
+            </div>
             <div class="tags"><span class="tag">MPC</span><span class="tag">PPO</span><span class="tag">Isaac Gym</span><span class="tag">MuJoCo</span></div>
           </article>
 
@@ -636,31 +658,29 @@
               <li>采用 iVOX + 哈希映射进行 O(N) 近邻搜索，结合改进 JPS 构建 3D 安全走廊，复杂环境下耗时小于 5ms。</li>
               <li>基于 MINCO 轨迹参数化与 L-BFGS 非线性优化生成高阶连续轨迹，并用 LMPC 实现高速跟踪。</li>
             </ul>
+            <div class="media-grid single">
+              <div class="media-card">
+                <video src="pic/nav.mp4" controls muted playsinline preload="metadata"></video>
+                <div class="media-caption">Real robot navigation demo</div>
+              </div>
+            </div>
             <div class="tags"><span class="tag">RoboMaster</span><span class="tag">MID360</span><span class="tag">ESKF</span><span class="tag">JPS</span><span class="tag">MINCO</span><span class="tag">LMPC</span></div>
             <div class="project-links">
               <a class="project-link" href="https://github.com/PeiXinYang-IST/IST_2025_SENTRY_" target="_blank" rel="noreferrer">GitHub Repository</a>
+              <a class="project-link" href="https://www.bilibili.com/video/BV1AvoGYoEYP/?spm_id_from=333.1387.homepage.video_card.click&vd_source=77160c86ddb29f0d5f35e31572b260c5" target="_blank" rel="noreferrer">Bilibili RViz Demo</a>
             </div>
           </article>
 
           <article class="card wide">
-            <div class="meta">Research Project · SGP_LOC · Semantic Graph-Based Persistent LiDAR Global Localization</div>
+            <div class="meta">Research Project · SGP_LOC</div>
             <h3>Semantic Graph-Based Persistent LiDAR Global Localization in Urban Environments</h3>
-            <p>
-              SGP_LOC 是一个面向 GNSS 失效城市驾驶场景的持久化语义 LiDAR 全局定位框架。与直接发布 one-shot 语义匹配结果不同，系统将 one-shot 位姿视为延迟到达的全局先验候选：前端通过语义 ICP 连续维护里程计，后端对候选位姿进行局部粒子验证、延迟补偿、轨迹一致性门限检查，并在通过验证后融合进因子图，从而减少重复语义结构、遮挡和分割噪声导致的大偏航与平移尖峰。
-            </p>
-            <div class="metric-row">
-              <div class="metric"><strong>96.64% - 100%</strong><span>MulRan / HeLiPR 长序列成功率</span></div>
-              <div class="metric"><strong>27.02° → 4.38°</strong><span>Roundabout 最大 yaw 误差降低</span></div>
-              <div class="metric"><strong>32.9 ms</strong><span>SGP_LOC 总计中位运行时间</span></div>
-              <div class="metric"><strong>2.31 GB</strong><span>38 分钟运行峰值内存</span></div>
+            <div class="media-grid single">
+              <div class="media-card">
+                <img src="pic/SGP_loc.png" alt="SGP_LOC project preview" />
+                <div class="media-caption">Project preview</div>
+              </div>
             </div>
-            <ul class="bullets">
-              <li>将语义 one-shot 定位从“单帧位姿输出”重构为“异步全局先验来源”，提升长序列定位稳定性。</li>
-              <li>设计基于粒子的局部语义验证器，使用同标签语义关联、判别性类别筛选和弱垂直残差评估候选可信度。</li>
-              <li>根据验证置信度构造动态先验协方差，并通过缓存里程计传播到当前时刻后进行因子图融合。</li>
-              <li>在 MulRan 与 HeLiPR 数据集上验证，系统在重复城市场景中保持连续位姿流并显著抑制大方向外点。</li>
-            </ul>
-            <div class="tags"><span class="tag blue">Semantic SLAM</span><span class="tag blue">LiDAR Localization</span><span class="tag blue">Factor Graph</span><span class="tag blue">Particle Verification</span><span class="tag blue">Urban Driving</span></div>
+            <div class="tags"><span class="tag blue">Semantic SLAM</span><span class="tag blue">LiDAR Localization</span><span class="tag blue">Factor Graph</span><span class="tag blue">Urban Driving</span></div>
             <div class="project-links">
               <a class="project-link" href="https://github.com/PeiXinYang-IST/SGP_LOC" target="_blank" rel="noreferrer">GitHub Repository</a>
             </div>
@@ -690,7 +710,7 @@
           <div class="timeline-item">
             <div class="time">2026/01 - Present</div>
             <div>
-              <h3>北京橡树清溪科技公司 · PNC 工程师</h3>
+              <h3>Oak Creek · PNC Engineer</h3>
               <p>参与人形机器人规划控制系统研发，负责 Lattice 局部规划、SFC 安全走廊与 NMPC 实时控制器。</p>
             </div>
           </div>
