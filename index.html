@@ -96,7 +96,7 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 1.15fr 0.85fr;
       gap: 34px;
       align-items: center;
     }
@@ -390,24 +390,17 @@
     }
 
     .media-card.portrait {
-      width: min(100%, 260px) !important;
-      max-width: 260px !important;
-      margin: 0 auto !important;
-      background: #0f172a;
+      width: min(100%, 330px);
+      margin: 0 auto;
     }
 
     .media-card.portrait video {
-      display: block !important;
-      width: 100% !important;
-      height: 462px !important;
-      max-height: 462px !important;
-      aspect-ratio: 9 / 16 !important;
-      object-fit: contain !important;
+      display: block;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      max-height: 560px;
+      object-fit: cover;
       background: #0f172a;
-    }
-
-    .media-card.portrait .media-caption {
-      background: #f8fafc;
     }
 
     .media-caption {
@@ -572,11 +565,21 @@
             本科就读于西南石油大学通信工程，长期参与机器人系统开发，方向聚焦机器人规划控制、状态估计、SLAM、NMPC 与强化学习 sim2real。未来希望研究面向真实机器人的 world-model-based RL、VLA/具身智能决策与学习控制。
           </p>
           <div class="actions">
+            <!-- <a class="btn primary" href="assets/Yang_Peixin_Resume.pdf" target="_blank" rel="noreferrer">Download Resume</a> -->
             <a class="btn" href="mailto:2429697526@qq.com">Email Me</a>
             <a class="btn" href="https://github.com/PeiXinYang-IST" target="_blank" rel="noreferrer">GitHub</a>
-            <a class="btn" href="https://space.bilibili.com/646213110" target="_blank" rel="noreferrer">Bilibili</a>
           </div>
         </div>
+
+        <!-- <aside class="hero-card" aria-label="Highlights">
+          <h2>Highlights</h2>
+          <div class="stat-grid">
+            <div class="stat"><strong>RoboMaster</strong><span>2025 区域赛全国一等奖 / 超级对抗赛全国二等奖</span></div>
+            <div class="stat"><strong>&lt;5ms</strong><span>复杂环境下 3D 安全走廊构建耗时</span></div>
+            <div class="stat"><strong>NMPC</strong><span>超平面线性约束下的实时避障控制</span></div>
+            <div class="stat"><strong>1ms</strong><span>STM32H7 单次策略推理部署</span></div>
+          </div>
+        </aside> -->
       </div>
     </header>
 
@@ -623,7 +626,7 @@
         </div>
 
         <div class="cards">
-          <article class="card">
+          <article class="card featured">
             <div class="meta">Humanoid Robot PNC · NMPC Hyperplane · 2026/01 - Present</div>
             <h3>人形机器人规划控制算法研发</h3>
             <ul class="bullets">
@@ -634,7 +637,7 @@
             </ul>
             <div class="media-grid single center">
               <div class="media-card portrait">
-                <video class="portrait-video" src="pic/Planner.mp4" controls muted playsinline preload="metadata"></video>
+                <video src="pic/Planner.mp4" controls muted playsinline preload="metadata"></video>
                 <div class="media-caption">Planner demo · portrait video</div>
               </div>
             </div>
@@ -683,7 +686,7 @@
             <div class="tags"><span class="tag">RoboMaster</span><span class="tag">MID360</span><span class="tag">ESKF</span><span class="tag">JPS</span><span class="tag">MINCO</span><span class="tag">LMPC</span></div>
             <div class="project-links">
               <a class="project-link" href="https://github.com/PeiXinYang-IST/IST_2025_SENTRY_" target="_blank" rel="noreferrer">GitHub Repository</a>
-              <a class="project-link" href="https://www.bilibili.com/video/BV1AvoGYoEYP/" target="_blank" rel="noreferrer">Bilibili RViz Demo</a>
+              <a class="project-link" href="https://www.bilibili.com/video/BV1AvoGYoEYP/?spm_id_from=333.1387.homepage.video_card.click&vd_source=77160c86ddb29f0d5f35e31572b260c5" target="_blank" rel="noreferrer">Bilibili RViz Demo</a>
             </div>
           </article>
 
@@ -784,7 +787,6 @@
           <div class="actions">
             <a class="btn primary" href="mailto:2429697526@qq.com">Email</a>
             <a class="btn" href="https://github.com/PeiXinYang-IST" target="_blank" rel="noreferrer">GitHub</a>
-            <a class="btn" href="https://space.bilibili.com/646213110" target="_blank" rel="noreferrer">Bilibili</a>
           </div>
         </div>
       </div>
