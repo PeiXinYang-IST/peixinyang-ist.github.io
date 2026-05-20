@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="杨佩鑫的机器人算法作品集：规划控制、状态估计、强化学习、SLAM 与具身智能研究兴趣。" />
+  <title>杨佩鑫 | Robotics Algorithm Portfolio</title>
+  <style>
+    :root {
+      --bg: #f7f8fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #64748b;
+      --line: #e5e7eb;
+      --primary: #0f766e;
+      --primary-dark: #115e59;
+      --accent: #2563eb;
+      --tag: #eef6f6;
+      --shadow: 0 20px 55px rgba(15, 23, 42, 0.08);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(37, 99, 235, 0.09), transparent 34%),
+        radial-gradient(circle at 85% 5%, rgba(15, 118, 110, 0.12), transparent 32%),
+        var(--bg);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(18px);
+      background: rgba(247, 248, 251, 0.82);
+      border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+    }
+
+    .nav-inner {
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      font-size: 18px;
+    }
+
+    .brand span {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .hero {
+      padding: 78px 0 42px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border: 1px solid rgba(15, 118, 110, 0.16);
+      border-radius: 999px;
+      color: var(--primary-dark);
+      background: rgba(255, 255, 255, 0.72);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 0 6px rgba(15, 118, 110, 0.12);
+    }
+
+    h1 {
+      font-size: clamp(42px, 7vw, 78px);
+      line-height: 1.02;
+      letter-spacing: -0.06em;
+      margin-bottom: 22px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(120deg, var(--primary-dark), var(--accent));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 760px;
+      margin-bottom: 28px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 14px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(15, 23, 42, 0.08);
+      border-color: rgba(15, 118, 110, 0.28);
+    }
+
+    .btn.primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-color: transparent;
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(229, 231, 235, 0.95);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h2 {
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .stat {
+      padding: 18px;
+      background: #f8fafc;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 26px;
+      line-height: 1.15;
+      color: var(--primary-dark);
+      margin-bottom: 4px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    section {
+      padding: 42px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 22px;
+    }
+
+    .section-kicker {
+      color: var(--primary);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    h2 {
+      font-size: clamp(26px, 4vw, 40px);
+      line-height: 1.16;
+      letter-spacing: -0.04em;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      max-width: 620px;
+      font-size: 15px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 10px 35px rgba(15, 23, 42, 0.045);
+    }
+
+    .card.featured {
+      grid-column: span 2;
+    }
+
+    .card h3 {
+      font-size: 20px;
+      line-height: 1.25;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+
+    .meta {
+      color: var(--primary-dark);
+      font-weight: 800;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .bullets li {
+      position: relative;
+      padding-left: 18px;
+      margin: 8px 0;
+    }
+
+    .bullets li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.75em;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      display: inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--tag);
+      color: var(--primary-dark);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 22px;
+      padding: 24px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 35px rgba(15, 23, 42, 0.045);
+    }
+
+    .time {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .timeline-item h3 {
+      font-size: 20px;
+      margin-bottom: 6px;
+      letter-spacing: -0.03em;
+    }
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .skill-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+
+    .skill-card h3 {
+      font-size: 17px;
+      margin-bottom: 10px;
+    }
+
+    .skill-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .contact {
+      background: #0f172a;
+      color: #fff;
+      border-radius: 30px;
+      padding: 42px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .contact::after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      top: -80px;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: rgba(15, 118, 110, 0.35);
+    }
+
+    .contact h2,
+    .contact p,
+    .contact .actions {
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact p {
+      color: #cbd5e1;
+      max-width: 720px;
+      margin: 12px 0 0;
+    }
+
+    .footer {
+      padding: 30px 0 46px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .cards,
+      .skills,
+      .contact {
+        grid-template-columns: 1fr;
+      }
+
+      .card.featured {
+        grid-column: span 1;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-desc {
+        margin-top: 10px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">Yang <span>Peixin</span></a>
+      <div class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#research">Research</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <header class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> Robotics · Planning & Control · RL</div>
+          <h1>杨佩鑫<br /><span class="gradient-text">Robotics Algorithm Engineer</span></h1>
+          <p>
+            本科就读于西南石油大学通信工程，长期参与机器人系统开发，方向聚焦机器人规划控制、状态估计、SLAM、MPC 与强化学习 sim2real。未来希望研究面向真实机器人的 world-model-based RL、VLA/具身智能决策与学习控制。
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="assets/Yang_Peixin_Resume.pdf" target="_blank" rel="noreferrer">Download Resume</a>
+            <a class="btn" href="mailto:2429697526@qq.com">Email Me</a>
+            <a class="btn" href="https://github.com/PeiXinYang-IST" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Highlights">
+          <h2>Highlights</h2>
+          <div class="stat-grid">
+            <div class="stat"><strong>RoboMaster</strong><span>2025 区域赛全国一等奖 / 超级对抗赛全国二等奖</span></div>
+            <div class="stat"><strong>&lt;5ms</strong><span>复杂环境下 3D 安全走廊构建耗时</span></div>
+            <div class="stat"><strong>100×</strong><span>GPU 并行语义描述子全局构建加速</span></div>
+            <div class="stat"><strong>1ms</strong><span>STM32H7 单次策略推理部署</span></div>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <section id="research">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Research Interests</div>
+            <h2>面向真实机器人的学习、规划与控制</h2>
+          </div>
+          <p class="section-desc">
+            希望把传统控制、状态估计和优化方法，与世界模型、强化学习、多模态策略学习结合起来，提升机器人在复杂开放环境中的泛化能力、鲁棒性与安全性。
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <h3>World Model for Robotics</h3>
+            <p>学习机器人与环境的潜在动力学模型，用于预测、规划和策略优化，降低真实交互成本。</p>
+            <div class="tags"><span class="tag">Latent Dynamics</span><span class="tag">Model-based RL</span><span class="tag">MPC</span></div>
+          </article>
+          <article class="card">
+            <h3>VLA / Embodied AI</h3>
+            <p>关注视觉-语言-动作模型在机器人任务规划、运动生成和闭环控制中的落地能力。</p>
+            <div class="tags"><span class="tag">VLA</span><span class="tag">Task Planning</span><span class="tag">Policy Learning</span></div>
+          </article>
+          <article class="card">
+            <h3>Learning-based Control</h3>
+            <p>结合 MPC、LQR、动力学建模和 PPO 等方法，研究可部署、可解释、可约束的机器人控制策略。</p>
+            <div class="tags"><span class="tag">MPC</span><span class="tag">PPO</span><span class="tag">Sim2Real</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Selected Projects</div>
+            <h2>作品集</h2>
+          </div>
+          <p class="section-desc">以下项目覆盖自主导航、轮足机器人强化学习控制、语义 SLAM 与人形机器人 PNC。</p>
+        </div>
+
+        <div class="cards">
+          <article class="card featured">
+            <div class="meta">RoboMaster 2025 · 自主导航机器人 · 2024/09 - 2025/05</div>
+            <h3>基于 MID360 多线激光雷达感知的自主导航机器人</h3>
+            <ul class="bullets">
+              <li>负责多传感器融合定位，设计 ESKF 紧耦合框架，融合轮速计预测与激光雷达扫描匹配观测。</li>
+              <li>采用 iVOX + 哈希映射进行 O(N) 近邻搜索，结合改进 JPS 构建 3D 安全走廊，复杂环境下耗时小于 5ms。</li>
+              <li>基于 MINCO 轨迹参数化与 L-BFGS 非线性优化，生成高阶连续、无碰撞平滑轨迹。</li>
+              <li>基于底盘动力学建模设计 LMPC 控制器，实现高速轨迹精准跟踪。</li>
+            </ul>
+            <div class="tags"><span class="tag">ROS</span><span class="tag">ESKF</span><span class="tag">JPS</span><span class="tag">MINCO</span><span class="tag">LMPC</span></div>
+          </article>
+
+          <article class="card">
+            <div class="meta">Legged Robotics · 2025/10 - 2026/01</div>
+            <h3>双轮足机器人强化学习控制</h3>
+            <ul class="bullets">
+              <li>基于 Newton-Euler 法建立全身动力学模型，构建全状态 LTV-MPC 优化问题。</li>
+              <li>设计 Dilated Res-TCN 替代 Kalman Filter 进行全身状态估计，结合 PPO 完成策略迭代。</li>
+              <li>完成 Isaac Gym 训练、MuJoCo sim2sim 与 STM32H7 端侧部署，单次推理约 1ms。</li>
+            </ul>
+            <div class="tags"><span class="tag">MPC</span><span class="tag">PPO</span><span class="tag">Isaac Gym</span><span class="tag">MuJoCo</span></div>
+          </article>
+
+          <article class="card">
+            <div class="meta">Semantic SLAM · 2025/06 - 2025/10</div>
+            <h3>大范围场景下的语义 SLAM 鲁棒长时定位</h3>
+            <ul class="bullets">
+              <li>提出帧间信息与 one-shot 定位结合的全局语义定位框架，提升纯 one-shot 方案鲁棒性。</li>
+              <li>使用 SegNet4D 语义分割，设计全局三角描述符并进行 GPU 并行构建。</li>
+              <li>结合因子图优化，在无 IMU 纯激光点云条件下实现鲁棒定位。</li>
+            </ul>
+            <div class="tags"><span class="tag">C++</span><span class="tag">GPU</span><span class="tag">Factor Graph</span><span class="tag">SLAM</span></div>
+          </article>
+
+          <article class="card featured">
+            <div class="meta">Humanoid Robot PNC · 北京橡树清溪科技公司 · 2026/01 - Present</div>
+            <h3>人形机器人规划控制算法研发</h3>
+            <ul class="bullets">
+              <li>作为核心算法负责人设计人形机器人 PNC 系统，覆盖局部规划、安全走廊与实时控制。</li>
+              <li>基于栅格采样生成多候选轨迹，通过碰撞检测和代价评估选择最优路径。</li>
+              <li>采用 OBB 有向包围盒收缩算法生成可通行矩形约束区域。</li>
+              <li>基于 Acados 开发 MPC 实时控制器，引入超平面线性约束处理多障碍物避障。</li>
+            </ul>
+            <div class="tags"><span class="tag">PNC</span><span class="tag">Lattice Planner</span><span class="tag">SFC</span><span class="tag">Acados</span><span class="tag">MPC</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Experience & Awards</div>
+            <h2>经历与竞赛</h2>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="time">2023/07 - 2027/06</div>
+            <div>
+              <h3>西南石油大学 · 通信工程本科</h3>
+              <p>主修数字信号处理、算法与数据结构、信息论、通信原理、数字电子技术等课程。CET-4 563，CET-6 483。</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="time">2026/01 - Present</div>
+            <div>
+              <h3>北京橡树清溪科技公司 · PNC 工程师</h3>
+              <p>参与人形机器人规划控制系统研发，负责 Lattice 局部规划、SFC 安全走廊与 MPC 实时控制器。</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="time">Awards</div>
+            <div>
+              <h3>机器人竞赛荣誉</h3>
+              <p>RoboMaster 2025 机甲大师超级对抗赛区域赛全国一等奖、雷达组全国一等奖、哨兵组全国二等奖；2024 年中国高校智能机器人创意大赛全国三等奖。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Technical Skills</div>
+            <h2>技术栈</h2>
+          </div>
+        </div>
+
+        <div class="skills">
+          <div class="skill-card">
+            <h3>Motion Planning</h3>
+            <p>A*, JPS, Hybrid A*, RRT, Informed RRT*, MINCO, Minimum Snap/Jerk, Acados, OSQP, IPOPT</p>
+          </div>
+          <div class="skill-card">
+            <h3>Control & Optimization</h3>
+            <p>MPC, LQR, PID, Lagrange / Newton-Euler dynamics, convex optimization, BFGS, L-BFGS</p>
+          </div>
+          <div class="skill-card">
+            <h3>State Estimation</h3>
+            <p>Bayesian filtering, ESKF, multi-sensor fusion, factor graph optimization, LiDAR odometry</p>
+          </div>
+          <div class="skill-card">
+            <h3>Programming & AI</h3>
+            <p>C++, Python, MATLAB, ROS/ROS2, Linux, Docker, Git, PyTorch, Isaac Gym, MuJoCo, Gazebo, PPO</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact">
+          <div>
+            <h2>Let’s build robust embodied intelligence.</h2>
+            <p>
+              欢迎交流机器人规划控制、状态估计、强化学习、world model、VLA 与具身智能方向的研究和项目合作。
+            </p>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="mailto:2429697526@qq.com">Email</a>
+            <a class="btn" href="https://github.com/PeiXinYang-IST" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© 2026 Yang Peixin. Built with GitHub Pages.</div>
+  </footer>
+</body>
+</html>
