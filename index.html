@@ -509,6 +509,49 @@
       text-align: center;
     }
 
+    .footer-analytics {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+
+    .map-widget {
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+      line-height: 0;
+    }
+
+    .visitor-counts {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .visitor-counts .count-label {
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-right: 6px;
+    }
+
+    .stat-divider {
+      color: var(--line);
+    }
+
+    .visitor-counts span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .copyright {
+      margin-top: 8px;
+    }
+
     @media (max-width: 900px) {
       .hero-grid,
       .cards,
@@ -795,7 +838,22 @@
   </main>
 
   <footer class="footer">
-    <div class="container">© 2026 Yang Peixin. Built with GitHub Pages.</div>
+    <div class="container">
+      <div class="footer-analytics">
+        <div class="map-widget">
+          <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=BejTxmHss0iYUDqO0ChTqrwfCr29bnfyoHsaNoBp1yE&cl=ffffff&w=a"></script>
+        </div>
+        <div class="visitor-counts">
+          <span class="count-label">Site Stats</span>
+          <span class="stat-divider">|</span>
+          <span id="busuanzi_container_site_pv">PV <strong id="busuanzi_value_site_pv"></strong></span>
+          <span class="stat-divider">·</span>
+          <span id="busuanzi_container_site_uv">UV <strong id="busuanzi_value_site_uv"></strong></span>
+        </div>
+      </div>
+      <div class="copyright">© 2026 Yang Peixin. Built with GitHub Pages.</div>
+    </div>
   </footer>
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </body>
 </html>
