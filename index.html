@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -5,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Yang Peixin's robotics algorithm portfolio: planning &amp; control, state estimation, reinforcement learning, SLAM, semantic LiDAR localization, and embodied intelligence." />
   <title>Yang Peixin | Robotics Algorithm Portfolio</title>
+
   <style>
     :root {
       --bg: #f7f8fb;
@@ -133,6 +135,7 @@
     .gradient-text {
       background: linear-gradient(120deg, var(--primary-dark), var(--accent));
       -webkit-background-clip: text;
+      background-clip: text;
       color: transparent;
     }
 
@@ -522,6 +525,8 @@
       overflow: hidden;
       box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
       line-height: 0;
+      background: #ffffff;
+      min-height: 60px;
     }
 
     .visitor-counts {
@@ -530,6 +535,8 @@
       gap: 10px;
       font-size: 13px;
       color: var(--muted);
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .visitor-counts .count-label {
@@ -584,6 +591,7 @@
     }
   </style>
 </head>
+
 <body>
   <nav class="nav">
     <div class="container nav-inner">
@@ -602,11 +610,22 @@
     <header class="hero">
       <div class="container hero-grid">
         <div>
-          <div class="eyebrow"><span class="dot"></span> Robotics · Planning & Control · RL · Semantic SLAM</div>
-          <h1>Yang Peixin<br /><span class="gradient-text">Robotics Algorithm Engineer</span></h1>
+          <div class="eyebrow">
+            <span class="dot"></span>
+            Robotics · Planning & Control · RL · Semantic SLAM
+          </div>
+
+          <h1>
+            Yang Peixin<br />
+            <span class="gradient-text">Robotics Algorithm Engineer</span>
+          </h1>
+
           <p>
-            B.Eng. in Communication Engineering at Southwest Petroleum University. Focused on robot planning &amp; control, state estimation, NMPC, and RL sim2real. Aspiring to research world-model-based RL, VLA/embodied intelligence, and learning-based control for real-world robots.
+            B.Eng. in Communication Engineering at Southwest Petroleum University.
+            Focused on robot planning &amp; control, state estimation, NMPC, and RL sim2real.
+            Aspiring to research world-model-based RL, VLA/embodied intelligence, and learning-based control for real-world robots.
           </p>
+
           <div class="actions">
             <!-- <a class="btn primary" href="assets/Yang_Peixin_Resume.pdf" target="_blank" rel="noreferrer">Download Resume</a> -->
             <a class="btn" href="mailto:2429697526@qq.com">Email Me</a>
@@ -615,7 +634,8 @@
           </div>
         </div>
 
-        <!-- <aside class="hero-card" aria-label="Highlights">
+        <!--
+        <aside class="hero-card" aria-label="Highlights">
           <h2>Highlights</h2>
           <div class="stat-grid">
             <div class="stat"><strong>RoboMaster</strong><span>2025 Regional 1st Prize / National 2nd Prize</span></div>
@@ -623,7 +643,8 @@
             <div class="stat"><strong>NMPC</strong><span>Real-time obstacle avoidance with hyperplane constraints</span></div>
             <div class="stat"><strong>1ms</strong><span>Single policy inference on STM32H7</span></div>
           </div>
-        </aside> -->
+        </aside>
+        -->
       </div>
     </header>
 
@@ -634,26 +655,52 @@
             <div class="section-kicker">Research Interests</div>
             <h2>Learning, Planning &amp; Control for Real-World Robots</h2>
           </div>
+
           <p class="section-desc">
-            Bridging classical control, state estimation, and optimization with world models, reinforcement learning, and multimodal policy learning — to improve generalization, robustness, and safety in complex open environments.
+            Bridging classical control, state estimation, and optimization with world models,
+            reinforcement learning, and multimodal policy learning — to improve generalization,
+            robustness, and safety in complex open environments.
           </p>
         </div>
 
         <div class="cards">
           <article class="card">
             <h3>World Model for Robotics</h3>
-            <p>Latent dynamics models for robot-environment interaction — prediction, planning, and policy optimization with less real-world interaction cost.</p>
-            <div class="tags"><span class="tag">Latent Dynamics</span><span class="tag">Model-based RL</span><span class="tag">MPC</span></div>
+            <p>
+              Latent dynamics models for robot-environment interaction — prediction,
+              planning, and policy optimization with less real-world interaction cost.
+            </p>
+            <div class="tags">
+              <span class="tag">Latent Dynamics</span>
+              <span class="tag">Model-based RL</span>
+              <span class="tag">MPC</span>
+            </div>
           </article>
+
           <article class="card">
             <h3>VLA / Embodied AI</h3>
-            <p>Vision-language-action models for robot task planning, motion generation, and closed-loop control.</p>
-            <div class="tags"><span class="tag">VLA</span><span class="tag">Task Planning</span><span class="tag">Policy Learning</span></div>
+            <p>
+              Vision-language-action models for robot task planning, motion generation,
+              and closed-loop control.
+            </p>
+            <div class="tags">
+              <span class="tag">VLA</span>
+              <span class="tag">Task Planning</span>
+              <span class="tag">Policy Learning</span>
+            </div>
           </article>
+
           <article class="card">
             <h3>Learning-based Control</h3>
-            <p>Combining NMPC, LQR, dynamics modeling, and PPO for deployable, interpretable, and safety-constrained robot control.</p>
-            <div class="tags"><span class="tag">NMPC</span><span class="tag">PPO</span><span class="tag">Sim2Real</span></div>
+            <p>
+              Combining NMPC, LQR, dynamics modeling, and PPO for deployable,
+              interpretable, and safety-constrained robot control.
+            </p>
+            <div class="tags">
+              <span class="tag">NMPC</span>
+              <span class="tag">PPO</span>
+              <span class="tag">Sim2Real</span>
+            </div>
           </article>
         </div>
       </div>
@@ -666,26 +713,38 @@
             <div class="section-kicker">Selected Projects</div>
             <h2>Portfolio</h2>
           </div>
-          <p class="section-desc">Humanoid PNC, autonomous navigation, wheel-legged RL control, and semantic LiDAR global localization.</p>
+          <p class="section-desc">
+            Humanoid PNC, autonomous navigation, wheel-legged RL control, and semantic LiDAR global localization.
+          </p>
         </div>
 
         <div class="cards">
           <article class="card featured">
             <div class="meta">Humanoid Robot PNC · NMPC Hyperplane · 2026/01 - Present</div>
             <h3>Humanoid Robot Planning &amp; Control</h3>
+
             <ul class="bullets">
               <li>Lattice local planner + SFC safe corridor + NMPC control loop for local obstacle avoidance and trajectory tracking.</li>
               <li>Grid-sampled multi-candidate trajectories with collision checking and cost-based selection.</li>
               <li>OBB shrink algorithm generating drivable rectangular constraint regions in local frame.</li>
               <li>Real-time NMPC via Acados with hyperplane linear constraints for multi-obstacle avoidance.</li>
             </ul>
+
             <div class="media-grid single center">
               <div class="media-card portrait">
                 <video src="pic/Planner.mp4" controls muted playsinline preload="metadata"></video>
                 <div class="media-caption">Planner demo · portrait video</div>
               </div>
             </div>
-            <div class="tags"><span class="tag">Humanoid Robot</span><span class="tag">Lattice Planner</span><span class="tag">SFC</span><span class="tag">Acados</span><span class="tag">NMPC</span></div>
+
+            <div class="tags">
+              <span class="tag">Humanoid Robot</span>
+              <span class="tag">Lattice Planner</span>
+              <span class="tag">SFC</span>
+              <span class="tag">Acados</span>
+              <span class="tag">NMPC</span>
+            </div>
+
             <div class="project-links">
               <a class="project-link" href="https://github.com/PeiXinYang-IST/NMPC_hyperplane" target="_blank" rel="noreferrer">GitHub Repository</a>
             </div>
@@ -694,40 +753,60 @@
           <article class="card featured">
             <div class="meta">Legged Robotics · 2025/10 - 2026/01</div>
             <h3>Wheel-Legged Robot RL Control</h3>
+
             <ul class="bullets">
               <li>Newton-Euler full-body dynamics model with LTV-MPC optimization.</li>
-              <li>Dilated Res-TCN for full-state estimation (replacing Kalman Filter); PPO policy iteration.</li>
-              <li>Isaac Gym training &rarr; MuJoCo sim2sim &rarr; STM32H7 deployment (~1ms inference).</li>
+              <li>Dilated Res-TCN for full-state estimation replacing Kalman Filter; PPO policy iteration.</li>
+              <li>Isaac Gym training &rarr; MuJoCo sim2sim &rarr; STM32H7 deployment, about 1ms inference.</li>
             </ul>
+
             <div class="media-grid">
               <div class="media-card horizontal">
                 <video src="pic/wheel_leg.mp4" controls muted playsinline preload="metadata"></video>
                 <div class="media-caption">Simulation / policy rollout</div>
               </div>
+
               <div class="media-card horizontal">
                 <video src="pic/real.mp4" controls muted playsinline preload="metadata"></video>
                 <div class="media-caption">Real-world deployment</div>
               </div>
             </div>
-            <div class="tags"><span class="tag">MPC</span><span class="tag">PPO</span><span class="tag">Isaac Gym</span><span class="tag">MuJoCo</span></div>
+
+            <div class="tags">
+              <span class="tag">MPC</span>
+              <span class="tag">PPO</span>
+              <span class="tag">Isaac Gym</span>
+              <span class="tag">MuJoCo</span>
+            </div>
           </article>
 
           <article class="card featured">
             <div class="meta">RoboMaster 2025 · MID360 LiDAR Navigation · 2024/09 - 2025/05</div>
             <h3>Autonomous Navigation with MID360 LiDAR</h3>
+
             <ul class="bullets">
               <li>Led RoboMaster sentry navigation system: localization, search, trajectory optimization, and chassis control.</li>
               <li>ESKF tightly-coupled fusion of wheel odometry prediction and LiDAR scan-matching observations.</li>
-              <li>iVOX + hash map O(N) neighbor search with improved JPS for 3D safe corridor (&lt;5ms).</li>
+              <li>iVOX + hash map O(N) neighbor search with improved JPS for 3D safe corridor under 5ms.</li>
               <li>MINCO trajectory parameterization + L-BFGS optimization for high-order smooth trajectories; LMPC tracking.</li>
             </ul>
+
             <div class="media-grid single">
               <div class="media-card horizontal">
                 <video src="pic/nav.mp4" controls muted playsinline preload="metadata"></video>
                 <div class="media-caption">Real robot navigation demo</div>
               </div>
             </div>
-            <div class="tags"><span class="tag">RoboMaster</span><span class="tag">MID360</span><span class="tag">ESKF</span><span class="tag">JPS</span><span class="tag">MINCO</span><span class="tag">LMPC</span></div>
+
+            <div class="tags">
+              <span class="tag">RoboMaster</span>
+              <span class="tag">MID360</span>
+              <span class="tag">ESKF</span>
+              <span class="tag">JPS</span>
+              <span class="tag">MINCO</span>
+              <span class="tag">LMPC</span>
+            </div>
+
             <div class="project-links">
               <a class="project-link" href="https://github.com/PeiXinYang-IST/IST_2025_SENTRY_" target="_blank" rel="noreferrer">GitHub Repository</a>
               <a class="project-link" href="https://www.bilibili.com/video/BV1AvoGYoEYP/?spm_id_from=333.1387.homepage.video_card.click&vd_source=77160c86ddb29f0d5f35e31572b260c5" target="_blank" rel="noreferrer">Bilibili RViz Demo</a>
@@ -737,13 +816,21 @@
           <article class="card wide">
             <div class="meta">Research Project · SGP_LOC</div>
             <h3>Semantic Graph-Based Persistent LiDAR Global Localization in Urban Environments</h3>
+
             <div class="media-grid single">
               <div class="media-card horizontal">
                 <img src="pic/SGP_loc.png" alt="SGP_LOC project preview" />
                 <div class="media-caption">Project preview</div>
               </div>
             </div>
-            <div class="tags"><span class="tag blue">Semantic SLAM</span><span class="tag blue">LiDAR Localization</span><span class="tag blue">Factor Graph</span><span class="tag blue">Urban Driving</span></div>
+
+            <div class="tags">
+              <span class="tag blue">Semantic SLAM</span>
+              <span class="tag blue">LiDAR Localization</span>
+              <span class="tag blue">Factor Graph</span>
+              <span class="tag blue">Urban Driving</span>
+            </div>
+
             <div class="project-links">
               <a class="project-link" href="https://github.com/PeiXinYang-IST/SGP_LOC" target="_blank" rel="noreferrer">GitHub Repository</a>
             </div>
@@ -766,7 +853,11 @@
             <div class="time">2023/07 - 2027/06</div>
             <div>
               <h3>Southwest Petroleum University · B.Eng. Communication Engineering</h3>
-              <p>Courses: Digital Signal Processing, Algorithms &amp; Data Structures, Information Theory, Communication Principles, Digital Electronics. CET-4 563, CET-6 483.</p>
+              <p>
+                Courses: Digital Signal Processing, Algorithms &amp; Data Structures,
+                Information Theory, Communication Principles, Digital Electronics.
+                CET-4 563, CET-6 483.
+              </p>
             </div>
           </div>
 
@@ -774,7 +865,10 @@
             <div class="time">2026/01 - 2026/05</div>
             <div>
               <h3>Oak Creek · PNC Engineer</h3>
-              <p>Developed humanoid robot PNC system: Lattice local planner, SFC safe corridor, and NMPC real-time controller.</p>
+              <p>
+                Developed humanoid robot PNC system: Lattice local planner,
+                SFC safe corridor, and NMPC real-time controller.
+              </p>
             </div>
           </div>
 
@@ -782,7 +876,11 @@
             <div class="time">Awards</div>
             <div>
               <h3>Robotics Competition Awards</h3>
-              <p>RoboMaster 2025: Regional 1st Prize (National), Radar Group 1st Prize, Sentry Group 2nd Prize. 2024 China University Intelligent Robot Creative Competition: National 3rd Prize.</p>
+              <p>
+                RoboMaster 2025: Regional 1st Prize, Radar Group 1st Prize,
+                Sentry Group 2nd Prize. 2024 China University Intelligent Robot
+                Creative Competition: National 3rd Prize.
+              </p>
             </div>
           </div>
         </div>
@@ -803,14 +901,17 @@
             <h3>Motion Planning</h3>
             <p>A*, JPS, Hybrid A*, RRT, Informed RRT*, MINCO, Minimum Snap/Jerk, Acados, OSQP, IPOPT</p>
           </div>
+
           <div class="skill-card">
             <h3>Control & Optimization</h3>
             <p>NMPC, MPC, LQR, PID, Lagrange / Newton-Euler dynamics, convex optimization, BFGS, L-BFGS</p>
           </div>
+
           <div class="skill-card">
             <h3>State Estimation & SLAM</h3>
             <p>Bayesian filtering, ESKF, multi-sensor fusion, factor graph optimization, LiDAR odometry, semantic SLAM</p>
           </div>
+
           <div class="skill-card">
             <h3>Programming & AI</h3>
             <p>C++, Python, MATLAB, ROS/ROS2, Linux, Docker, Git, PyTorch, Isaac Gym, MuJoCo, Gazebo, PPO</p>
@@ -825,9 +926,11 @@
           <div>
             <h2>Let’s build robust embodied intelligence.</h2>
             <p>
-              Open to collaboration on robot planning &amp; control, state estimation, semantic SLAM, reinforcement learning, world models, VLA, and embodied intelligence.
+              Open to collaboration on robot planning &amp; control, state estimation,
+              semantic SLAM, reinforcement learning, world models, VLA, and embodied intelligence.
             </p>
           </div>
+
           <div class="actions">
             <a class="btn primary" href="mailto:2429697526@qq.com">Email</a>
             <a class="btn" href="https://github.com/PeiXinYang-IST" target="_blank" rel="noreferrer">GitHub</a>
@@ -841,10 +944,13 @@
     <div class="container">
       <div class="footer-analytics">
         <div class="map-widget">
-  <script type="text/javascript" id="clustrmaps"
-    src="https://cdn.clustrmaps.com/map_v2.js?d=BejTxmHss0iYUDqO0ChTqrwfCr29bnfyoHsaNoBp1yE&cl=ffffff&w=a">
-  </script>
-</div>
+          <script
+            type="text/javascript"
+            id="clustrmaps"
+            src="https://cdn.clustrmaps.com/map_v2.js?d=BejTxmHss0iYUDqO0ChTqrwfCr29bnfyoHsaNoBp1yE&cl=ffffff&w=a">
+          </script>
+        </div>
+
         <div class="visitor-counts">
           <span class="count-label">Site Stats</span>
           <span class="stat-divider">|</span>
@@ -853,9 +959,13 @@
           <span id="busuanzi_container_site_uv">UV <strong id="busuanzi_value_site_uv"></strong></span>
         </div>
       </div>
+
       <div class="copyright">© 2026 Yang Peixin. Built with GitHub Pages.</div>
     </div>
   </footer>
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </body>
 </html>
+```
+
