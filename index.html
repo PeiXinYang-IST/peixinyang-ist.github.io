@@ -273,6 +273,23 @@
       aspect-ratio: 4 / 3;
     }
 
+    .humanoid-media-pair {
+      display: grid;
+      grid-template-columns: minmax(0, 1.65fr) minmax(120px, 0.65fr);
+      gap: 8px;
+      height: clamp(230px, 24vw, 305px);
+    }
+
+    .humanoid-media-pair .media-frame,
+    .humanoid-media-pair .media-frame video {
+      height: 100%;
+    }
+
+    .humanoid-media-pair .media-frame video {
+      aspect-ratio: auto;
+      object-fit: contain;
+    }
+
     .media-caption {
       display: flex;
       justify-content: space-between;
@@ -642,6 +659,20 @@
         aspect-ratio: 16 / 10;
       }
 
+      .humanoid-media-pair {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+
+      .humanoid-media-pair .media-frame,
+      .humanoid-media-pair .media-frame video {
+        height: auto;
+      }
+
+      .humanoid-media-pair .media-frame video {
+        aspect-ratio: 16 / 10;
+      }
+
       .project-footer {
         align-items: flex-start;
         flex-direction: column;
@@ -718,12 +749,17 @@
         <div class="project-list">
           <article class="project">
             <div class="project-media">
-              <div class="media-frame portrait-video">
-                <video src="pic/Planner.mp4" controls muted playsinline preload="metadata" aria-label="Humanoid robot planning and control demonstration"></video>
+              <div class="humanoid-media-pair">
+                <div class="media-frame">
+                  <video src="pic/oak.mp4" controls muted playsinline preload="metadata" aria-label="Humanoid navigation planning visualization in RViz"></video>
+                </div>
+                <div class="media-frame portrait-video">
+                  <video src="pic/Planner.mp4" controls muted playsinline preload="metadata" aria-label="Humanoid robot real-world navigation demonstration"></video>
+                </div>
               </div>
               <div class="media-caption">
-                <span>Humanoid planning and obstacle-avoidance test</span>
-                <span>Real robot</span>
+                <span>Planning visualization and real-robot navigation</span>
+                <span>RViz · Real robot</span>
               </div>
             </div>
 
@@ -738,11 +774,11 @@
               </p>
               <ul class="project-contributions">
                 <li>Built a lattice local planner with collision-checked, cost-ranked trajectory candidates.</li>
-                <li>Designed an OBB-shrink method to construct locally drivable rectangular safe corridors.</li>
+                <li>Designed an extended state observer (ESO) to estimate and compensate lumped control errors arising from model mismatch between the NMPC's lightweight system-identified motion model and the closed-loop behavior of the RL locomotion controller.</li>
                 <li>Formulated multi-obstacle avoidance as hyperplane constraints in an Acados NMPC controller.</li>
               </ul>
               <div class="project-footer">
-                <span class="project-tags">Lattice · SFC · NMPC · Acados</span>
+                <span class="project-tags">Lattice · SFC · NMPC · ESO · Acados</span>
                 <a class="text-link" href="https://github.com/PeiXinYang-IST/NMPC_hyperplane" target="_blank" rel="noreferrer">Code</a>
               </div>
             </div>
