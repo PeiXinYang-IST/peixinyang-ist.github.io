@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Yang Peixin — robotics researcher and engineer working on motion planning, control, state estimation, reinforcement learning, and semantic localization.">
+  <meta name="description" content="Yang Peixin — Communication Engineering undergraduate and robotics engineer building motion planning, control, state estimation, reinforcement learning, and semantic localization systems.">
   <meta name="theme-color" content="#f5f4ef">
   <title>Yang Peixin — Robotics</title>
 
@@ -271,6 +271,23 @@
 
     .media-pair .media-frame video {
       aspect-ratio: 4 / 3;
+    }
+
+    .humanoid-media-pair {
+      display: grid;
+      grid-template-columns: minmax(0, 1.65fr) minmax(120px, 0.65fr);
+      gap: 8px;
+      height: clamp(230px, 24vw, 305px);
+    }
+
+    .humanoid-media-pair .media-frame,
+    .humanoid-media-pair .media-frame video {
+      height: 100%;
+    }
+
+    .humanoid-media-pair .media-frame video {
+      aspect-ratio: auto;
+      object-fit: contain;
     }
 
     .media-caption {
@@ -642,6 +659,20 @@
         aspect-ratio: 16 / 10;
       }
 
+      .humanoid-media-pair {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+
+      .humanoid-media-pair .media-frame,
+      .humanoid-media-pair .media-frame video {
+        height: auto;
+      }
+
+      .humanoid-media-pair .media-frame video {
+        aspect-ratio: 16 / 10;
+      }
+
       .project-footer {
         align-items: flex-start;
         flex-direction: column;
@@ -687,16 +718,16 @@
           <div class="overline">Robotics · Planning · Control</div>
           <h1>Yang Peixin</h1>
           <p class="hero-role">
-            Robotics researcher &amp; engineer<br>
-            Undergraduate student in Communication Engineering at Southwest Petroleum University
+            Robotics engineer focused on planning, control &amp; state estimation<br>
+            Communication Engineering undergraduate at Southwest Petroleum University
           </p>
         </div>
 
         <div class="hero-summary">
           <p>
             I build planning, estimation, and control systems that help robots move
-            robustly in the real world, with current interests in model-based
-            reinforcement learning and embodied intelligence.
+            robustly in the real world, with developing interests in world models,
+            model-based reinforcement learning, and embodied intelligence.
           </p>
           <div class="hero-links" aria-label="Profile links">
             <a href="mailto:2429697526@qq.com">Email</a>
@@ -718,19 +749,24 @@
         <div class="project-list">
           <article class="project">
             <div class="project-media">
-              <div class="media-frame portrait-video">
-                <video src="pic/Planner.mp4" controls muted playsinline preload="metadata" aria-label="Humanoid robot planning and control demonstration"></video>
+              <div class="humanoid-media-pair">
+                <div class="media-frame">
+                  <video src="pic/oak.mp4" controls muted playsinline preload="metadata" aria-label="Humanoid navigation planning visualization in RViz"></video>
+                </div>
+                <div class="media-frame portrait-video">
+                  <video src="pic/Planner.mp4" controls muted playsinline preload="metadata" aria-label="Humanoid robot real-world navigation demonstration"></video>
+                </div>
               </div>
               <div class="media-caption">
-                <span>Humanoid planning and obstacle-avoidance test</span>
-                <span>Real robot</span>
+                <span>Planning visualization and real-robot navigation</span>
+                <span>RViz · Real robot</span>
               </div>
             </div>
 
             <div class="project-content">
               <span class="project-index">01 / Humanoid Robotics</span>
               <h3>Humanoid Robot Planning &amp; Control</h3>
-              <p class="project-meta">Core algorithm lead · Oak Creek · Jan 2026 — Present</p>
+              <p class="project-meta">Core algorithm lead · Oak Creek · Jan 2026 — Apr 2026</p>
               <p class="project-abstract">
                 A real-time planning and control stack for humanoid navigation,
                 combining candidate trajectory search, safe-corridor construction,
@@ -738,11 +774,11 @@
               </p>
               <ul class="project-contributions">
                 <li>Built a lattice local planner with collision-checked, cost-ranked trajectory candidates.</li>
-                <li>Designed an OBB-shrink method to construct locally drivable rectangular safe corridors.</li>
+                <li>Designed an extended state observer (ESO) to estimate and compensate lumped control errors arising from model mismatch between the NMPC's lightweight system-identified motion model and the closed-loop behavior of the RL locomotion controller.</li>
                 <li>Formulated multi-obstacle avoidance as hyperplane constraints in an Acados NMPC controller.</li>
               </ul>
               <div class="project-footer">
-                <span class="project-tags">Lattice · SFC · NMPC · Acados</span>
+                <span class="project-tags">Lattice · SFC · NMPC · ESO · Acados</span>
                 <a class="text-link" href="https://github.com/PeiXinYang-IST/NMPC_hyperplane" target="_blank" rel="noreferrer">Code</a>
               </div>
             </div>
@@ -861,7 +897,7 @@
       <div class="container">
         <div class="section-heading">
           <div class="section-label">Research Interests</div>
-          <h2>Learning and control for reliable embodied systems.</h2>
+          <h2>Current engineering work and developing research interests.</h2>
         </div>
 
         <div class="research-grid">
@@ -869,8 +905,8 @@
             <span class="research-number">01</span>
             <h3>World Models for Robotics</h3>
             <p>
-              Learning compact robot–environment dynamics for prediction, planning,
-              and data-efficient policy optimization.
+              Exploring compact robot–environment dynamics for prediction, planning,
+              and data-efficient policy learning.
             </p>
           </article>
 
@@ -887,8 +923,8 @@
             <span class="research-number">03</span>
             <h3>Embodied Intelligence</h3>
             <p>
-              Vision-language-action policies and multimodal learning for closed-loop
-              robot reasoning and generalization.
+              Exploring vision-language-action policies and multimodal learning for
+              closed-loop robot reasoning and generalization.
             </p>
           </article>
         </div>
