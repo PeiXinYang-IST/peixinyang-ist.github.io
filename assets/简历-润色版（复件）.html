@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>杨佩鑫｜机器人算法工程师简历</title>
+  <style>
+    @page { size: A4; margin: 0; }
+    :root { --blue: #2458b8; --text: #151515; --muted: #596273; --band: #f2f3f5; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #fff; }
+    body { color: var(--text); font-family: "Times New Roman", "SimHei", "黑体", "Microsoft YaHei", sans-serif; font-size: 9.1pt; line-height: 1.295; }
+    .toolbar { position: sticky; z-index: 10; top: 6px; display: flex; align-items: center; gap: 7px; width: max-content; max-width: calc(100vw - 32px); margin: 6px auto 8px; padding: 7px 10px; border: 1px solid #d3d7df; border-radius: 8px; background: #fff; box-shadow: 0 4px 14px rgba(15, 23, 42, .12); color: #334155; font: 13px/1 Arial, "Microsoft YaHei", sans-serif; }
+    .toolbar label, .toolbar-title { color: #475569; font-weight: 700; white-space: nowrap; }
+    .toolbar button, .toolbar select { height: 32px; border-radius: 5px; font: inherit; transition: border-color .15s ease, box-shadow .15s ease, background .15s ease, transform .15s ease; }
+    .print-button { flex: 0 0 auto; padding: 0 12px; border: 1px solid var(--blue); background: var(--blue); color: #fff; cursor: pointer; font-weight: 700; }
+    .print-button:hover { background: #1d4ed8; }
+    .page-mode-select { min-width: 148px; padding: 0 7px; border: 1px solid #cbd5e1; background: #fff; color: #1e293b; cursor: pointer; }
+    .format-select { min-width: 100px; padding: 0 7px; border: 1px solid #cbd5e1; background: #fff; color: #1e293b; cursor: pointer; }
+    .format-select.font-size { min-width: 58px; }
+    .toolbar select:hover, .toolbar select:focus { border-color: #7296d8; box-shadow: 0 0 0 2px rgba(36, 88, 184, .12); outline: none; }
+    .toolbar-divider { width: 1px; height: 22px; background: #e2e8f0; margin: 0 2px; }
+    .tool-button { width: 32px; min-width: 32px; padding: 0; border: 1px solid #cbd5e1; background: #f8fafc; color: #334155; cursor: pointer; font-weight: 700; }
+    .tool-button:hover, .tool-button.active { border-color: #7296d8; background: #eff6ff; color: #1d4ed8; }
+    .history-button { width: auto; min-width: 46px; padding: 0 8px; }
+    .save-status { color: #64748b; white-space: nowrap; font-size: 12px; }
+    .color-control { display: flex; align-items: center; gap: 4px; height: 32px; padding: 0 5px; border: 1px solid #cbd5e1; border-radius: 5px; background: #fff; cursor: pointer; }
+    .color-control input { width: 21px; height: 21px; padding: 0; border: 0; background: transparent; cursor: pointer; }
+    @media screen and (max-width: 980px) { .toolbar { top: 6px; max-width: calc(100vw - 20px); flex-wrap: wrap; justify-content: center; } }
+    @media print { .toolbar { display: none; } }
+    .sheet { width: 210mm; min-height: 0; padding: 4.5mm 8mm; border-top: 0; margin: 0 auto; }
+    .page-break { break-before: auto; }
+    body[data-page-mode="continuous"] { width: 100%; }
+    body[data-page-mode="continuous"] .sheet { width: 210mm; }
+    body[data-page-mode="continuous"] .sheet + .sheet { padding-top: 0; }
+    @media screen {
+      body[data-page-mode="paged"] { min-height: 100vh; padding: 4mm 0 12mm; background: #eef0f3; }
+      body[data-page-mode="paged"] .sheet { min-height: 297mm; margin: 0 auto 12mm; background: #fff; box-shadow: 0 2px 18px rgba(31, 41, 55, .18); }
+      body[data-page-mode="paged"] .sheet:last-of-type { margin-bottom: 0; }
+      body[data-page-mode="continuous"] { background: #fff; }
+      body[data-page-mode="continuous"] .sheet { margin: 0 auto; box-shadow: none; }
+    }
+    @media print {
+      body[data-page-mode="paged"] .sheet { min-height: 297mm; margin: 0; box-shadow: none; }
+      body[data-page-mode="continuous"] .sheet { min-height: 0; margin: 0; box-shadow: none; }
+      body[data-page-mode="paged"] .sheet + .sheet { break-before: page; }
+      .section-title, .company { break-after: avoid; }
+    }
+    [contenteditable="true"]:focus { outline: 2px solid #b7caf3; outline-offset: 2px; }
+    h1 { margin: 0 0 1px; font-family: "Microsoft YaHei", "Arial", sans-serif; font-size: 19pt; line-height: 1.02; font-weight: 700; }
+    .header-grid { display: grid; grid-template-columns: minmax(0, 1fr) 22mm; gap: 6mm; align-items: start; }
+    .profile-photo-slot { position: relative; width: 21mm; height: 25mm; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid #d4d8de; background: #fafafa; color: #8b919c; font: 9pt/1.2 Arial, sans-serif; text-align: center; cursor: pointer; }
+    .profile-photo-slot:hover, .profile-photo-slot:focus-visible { border-color: #2458b8; outline: none; }
+    .profile-photo-slot::after { content: "点击上传"; position: absolute; inset: auto 0 0; padding: 4px 2px; background: rgba(36, 88, 184, .88); color: #fff; font: 8pt/1.2 Arial, "Microsoft YaHei", sans-serif; opacity: 0; transition: opacity .15s ease; }
+    .profile-photo-slot:hover::after, .profile-photo-slot:focus-visible::after { opacity: 1; }
+    .profile-photo-slot.has-photo::after { content: "点击替换"; }
+    .photo-placeholder { pointer-events: none; }
+    .photo-input { display: none; }
+    .profile-photo-slot img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .meta-row { display: flex; align-items: center; gap: 3px; margin: 0; font-size: 8.7pt; line-height: 1.18; white-space: nowrap; }
+    .meta-icon { width: 13px; height: 13px; object-fit: contain; flex: 0 0 auto; }
+    .meta-row strong { font-weight: 700; }
+    .separator { color: #2d2d2d; padding: 0 5px; }
+    .section { margin-top: 5px; }
+    .section-title { margin: 0 0 2px; padding-bottom: 0; border-bottom: 1.5px solid var(--blue); color: var(--blue); font-family: "Microsoft YaHei", "Arial", sans-serif; font-size: 12.5pt; line-height: 1.02; font-weight: 700; }
+    .lead { margin: 3px 0 4px; color: #1d448f; font-size: 10pt; line-height: 1.32; font-weight: 700; }
+    .evidence-link { margin: 2px 0 5px; color: #2458b8; font-size: 11.5pt; font-weight: 700; }
+    .evidence-link a { color: inherit; }
+    .evidence-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .evidence-link { display: flex; align-items: center; flex-wrap: wrap; gap: 2px; }
+    .trend-badge { min-width: 135px; padding: 4px 7px; border: 1px solid #7351a3; border-radius: 6px; color: #7351a3; text-align: center; font: 7px/1.25 Arial, sans-serif; }
+    .trend-badge strong { font-size: 8px; }
+    .company { display: flex; align-items: center; gap: 6px; min-height: 20px; margin: 2px 0 1px; padding: 1px 5px; border-radius: 4px; background: var(--band); page-break-inside: avoid; }
+    .company-logo { width: 27px; height: 27px; object-fit: contain; flex: 0 0 auto; }
+    .company-name { flex: 1; min-width: 0; font-size: 9.1pt; font-weight: 700; }
+    .company-name.project-heading-accent { color: var(--blue); }
+    .company-meta { color: #202020; font-size: 8.2pt; white-space: nowrap; }
+    .education-name .education-major { margin-left: 18px; }
+    .project { margin: 1px 0 3px; page-break-inside: avoid; }
+    .project-title { margin: 2px 0 1px; color: #244b9b; font-size: 9.9pt; line-height: 1.12; font-weight: 700; }
+    ul { margin: 0 0 1px 14px; padding: 0; }
+    li { margin: 0; }
+    li::marker { font-size: .8em; }
+    .nested { margin-left: 18px; }
+    .nested::marker { content: "○ "; }
+    .nested-deep { margin-left: 35px; }
+    .nested-deep::marker { content: "▪ "; }
+    .code { padding: 0 2px; border-radius: 2px; background: #eef0f3; font-family: "Cascadia Mono", Consolas, monospace; font-size: .9em; }
+    .muted { color: var(--muted); }
+    .small { font-size: 9pt; }
+    a { color: inherit; text-decoration-thickness: .7px; text-underline-offset: 1px; }
+    .profile-summary { margin: 2px 0 0; color: #243247; font-size: 8.6pt; line-height: 1.16; }
+    .inline-details { margin: 1px 1px 0; }
+    .project-links { margin-left: 6px; font-size: 8.2pt; font-weight: 700; white-space: nowrap; }
+    .skills-block { line-height: 1.16; }
+    .skills-block div { margin: 0; }
+    .status-tag { color: #8a4f0a; }
+    .personal-section { margin-top: 2px; break-inside: avoid; }
+    .personal-section .section-title { margin-bottom: 1px; }
+    .personal-description { font-size: 8.8pt; line-height: 1.12; white-space: nowrap; }
+  </style>
+</head>
+<body data-page-mode="paged">
+  <div class="toolbar">
+    <label for="pageMode">页面模式</label>
+    <select id="pageMode" class="page-mode-select" aria-label="选择页面模式">
+      <option value="paged">A4 分页</option>
+      <option value="continuous">A4 长页（不限高度）</option>
+    </select>
+    <span class="toolbar-divider" aria-hidden="true"></span>
+    <button class="tool-button history-button" type="button" data-command="undo" title="撤回编辑" aria-label="撤回编辑">撤回</button>
+    <button class="tool-button history-button" type="button" data-command="redo" title="前进编辑" aria-label="前进编辑">前进</button>
+    <label for="fontFamily">字体</label>
+    <select class="format-select" id="fontFamily" title="字体" aria-label="字体">
+      <option value="simhei">黑体</option>
+      <option value="yahei">微软雅黑</option>
+      <option value="simsun">宋体</option>
+      <option value="times">Times New Roman</option>
+      <option value="arial">Arial</option>
+    </select>
+    <label for="fontSize">字号</label>
+    <select class="format-select font-size" id="fontSize" title="字号" aria-label="字号">
+      <option value="10px">10</option>
+      <option value="11px" selected>11</option>
+      <option value="12px">12</option>
+      <option value="14px">14</option>
+      <option value="16px">16</option>
+      <option value="18px">18</option>
+      <option value="22px">22</option>
+      <option value="26px">26</option>
+    </select>
+    <label class="color-control" title="文字颜色"><span>颜色</span><input id="textColor" type="color" value="#151515" aria-label="文字颜色"></label>
+    <button class="tool-button" type="button" data-command="bold" title="加粗"><strong>B</strong></button>
+    <span id="saveStatus" class="save-status" role="status" aria-live="polite">自动保存已开启</span>
+    <button class="print-button" type="button" onclick="window.print()">打印 / 导出 PDF</button>
+  </div>
+
+  <main class="sheet" contenteditable="true">
+    <header class="header-grid">
+      <div>
+        <h1>杨佩鑫</h1>
+        <div class="meta-row"><img class="meta-icon" src="resume-assets/icons/phone.svg" alt="电话"><a href="tel:+8613658061430">136 5806 1430</a><span class="separator">|</span><img class="meta-icon" src="resume-assets/icons/envelope.svg" alt="邮箱"><a href="mailto:2429697526@qq.com">2429697526@qq.com</a></div>
+        <div class="meta-row"><img class="meta-icon" src="resume-assets/icons/user.svg" alt="身份"><strong>2027 届本科 · 机器人算法工程师 · 规划 / 控制 / 强化学习</strong></div>
+        <div class="meta-row"><img class="meta-icon" src="resume-assets/logos/github.svg" alt="GitHub"><a href="https://github.com/PeiXinYang-IST">github.com/PeiXinYang-IST</a><span class="separator">|</span><a href="https://peixinyang-ist.github.io/">peixinyang-ist.github.io</a><span class="separator">|</span><a href="https://space.bilibili.com/646213110?spm_id_from=333.1007.0.0">B站 Demo</a></div>
+        <p class="profile-summary">聚焦机器人学习、规划与控制，具备从状态估计、强化学习全身控制到实时部署的全栈研发经验。</p>
+      </div>
+      <div class="profile-photo-slot has-photo" contenteditable="false" role="button" tabindex="0" aria-label="选择或替换证件照">
+        <img class="profile-photo" src="resume-assets/profile.jpg" alt="杨佩鑫证件照">
+        <input class="photo-input" type="file" accept="image/*" aria-label="选择证件照">
+      </div>
+    </header>
+
+    <section class="section">
+      <h2 class="section-title">教育经历</h2>
+      <div class="company">
+        <div class="company-name education-name">西南石油大学（双一流）<span class="education-major">· 通信工程 · 本科</span></div>
+        <div class="company-meta">2023.07 - 2027.06</div>
+      </div>
+      <div class="inline-details"><strong>课程：</strong>数字信号处理、算法与数据结构、信息论、通信原理　｜　<strong>英语：</strong>CET-4 563、CET-6 483</div>
+      <div class="inline-details"><strong>竞赛：</strong>RoboMaster 2025 区域赛个人一等奖、雷达组全国一等奖、哨兵组全国二等奖；2024 中国高校智能机器人创意大赛全国三等奖</div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">实习经历</h2>
+      <div class="company">
+        <div class="company-name">北京橡树清溪科技公司 · PNC 工程师</div>
+        <div class="company-meta">2026.01 - 2026.04</div>
+      </div>
+      <article class="project">
+        <div class="project-title">人形机器人规划控制系统｜北京亦庄马拉松 <span class="project-links"><a href="https://github.com/PeiXinYang-IST/NMPC_hyperplane">项目代码</a></span></div>
+        <ul>
+          <li><strong>系统职责：</strong><strong>从 0 到 1</strong> 负责局部规划、安全走廊与 NMPC 跟踪控制链路的设计与实现，接入 10 Hz RTK 定位信号，支撑人形机器人在马拉松场景中的自主导航。</li>
+          <li><strong>Lattice 局部规划：</strong>基于栅格采样生成多条候选轨迹，结合碰撞检测与代价评估筛选可行路径。</li>
+          <li><strong>SFC 安全走廊：</strong>基于 OBB 收缩在局部坐标系生成矩形可通行域，将障碍信息转化为优化器可处理的约束。</li>
+          <li><strong>LPV 系统辨识：</strong>针对底层 RL locomotion 策略闭环的非最小相位与工况时变特性，基于指令—响应数据构建随工况调度的 LPV 预测模型，为上层 NMPC 提供动力学近似。</li>
+          <li><strong>NMPC 与扰动补偿：</strong>基于 Acados 开发实时非线性 MPC，单次求解约 <strong>2 ms</strong>；设计 ESO 补偿模型失配与外部扰动；室外连续运行数公里，横向控制误差稳定在 <strong>0.5 m 内</strong>。</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">项目经历</h2>
+      <div class="company">
+        <div class="company-name project-heading-accent">世界模型驱动的双轮足机器人全身运动控制与自主导航 · Owner</div>
+        <div class="company-meta">2025.10 - 至今</div>
+      </div>
+      <article class="project">
+        <ul>
+          <li><strong>动力学与 LPV-MPC：</strong>基于 Newton–Euler 建立全身动力学，以腿长调度 LPV 模型，在状态与控制约束下求解预测视域最优控制量。</li>
+          <li><strong>Blind 状态估计与策略学习：</strong>使用 TCN 编码本体感知历史，强扰动下速度估计误差 <strong>≤ 0.05 m/s</strong>；基于 PPO 训练复杂地形运动策略。</li>
+          <li><strong>仿真迁移与实机部署：</strong>在 Isaac Gym 并行训练、MuJoCo sim2sim 验证并部署至 STM32H7，单次推理 <strong>&lt; 1 ms</strong>；基于 PACE + CMA-ES 辨识电机与关节动力学参数，缩小 sim2real gap。</li>
+          <li><strong>分层策略扩展：</strong>继承 Blind Locomotion 的历史编码器、运动先验与 8 维动作流形，将未来 2 s 的 <span class="code">[10,5]</span> 轨迹编码为 32 维 latent 注入 Actor；结合课程学习与偏离恢复，实现规划轨迹全身跟踪。</li>
+          <li><strong>World–Action 未来规划：</strong>基于特权规划器采集专家数据，以 Future Depth / Trajectory Action 双流和双向 Cross-Attention 联合建模环境与动作；冻结 Wan2.2 VAE 表征未来深度，生成未来 2 s 轨迹。</li>
+        </ul>
+      </article>
+
+      <div class="company">
+        <div class="company-name project-heading-accent">UMV 自行车机器人模型重建与强化学习运动控制 · Owner <span class="project-links"><a href="https://github.com/PeiXinYang-IST/UMV_model">项目代码</a></span></div>
+        <div class="company-meta">2026.09 - 至今</div>
+      </div>
+      <article class="project">
+        <ul>
+          <li><strong>模型与控制接口：</strong>基于 Tripo 与 Blender 完成部件拆分、装配和关节设置，开源 <strong>6 连杆、5 关节</strong>简化 URDF；以前轮被动、转向 / 头颈位置 PD 和后轮速度控制构建执行接口。</li>
+          <li><strong>PPO 鲁棒控制：</strong>以投影重力、机身角速度、关节状态、历史动作及运动指令驱动 Actor，输出位置 / 速度目标；组合跟踪、姿态、平滑和力矩奖励，以硬约束终止、课程学习及动力学随机化提升安全性与迁移鲁棒性。</li>
+          <li><strong>动态技能训练：</strong>以三维引导线和关键姿态描述跳跃 / 翻转，按行进距离推进路点；结合参考状态初始化与迭代运动模仿，以策略 rollout 更新参考轨迹并降低关节越限和落地冲击。</li>
+        </ul>
+      </article>
+
+      <div class="company">
+        <div class="company-name project-heading-accent">RoboMaster 自主导航机器人 · Owner <span class="project-links"><a href="https://github.com/PeiXinYang-IST/IST_2025_SENTRY_">项目代码</a> · <a href="https://www.bilibili.com/video/BV1AvoGYoEYP/">演示视频</a></span></div>
+        <div class="company-meta">2024.09 - 2025.05</div>
+      </div>
+      <article class="project">
+        <ul>
+          <li><strong>融合定位：</strong>将轮速计接入 ESKF 紧耦合框架，以轮速里程计预测并结合 LiDAR 扫描匹配观测，实现 <strong>1000 Hz 高带宽定位输出</strong>，在剧烈撞击下仍保持稳定。</li>
+          <li><strong>路径搜索与安全走廊：</strong>以 iVOX + 哈希映射实现近邻搜索，结合改进 JPS 完成前端路径搜索，将复杂环境平面安全走廊构建耗时控制在 <strong>5 ms 以内</strong>。</li>
+          <li><strong>轨迹优化与控制：</strong>采用 MINCO 参数化与 L-BFGS 非线性优化生成高阶连续、无碰撞轨迹；基于底盘动力学设计带功率和轮速约束的 LMPC 跟踪控制器。</li>
+          <li><strong>竞赛结果：</strong>支撑队伍获得 RoboMaster 2025 超级对抗赛全国二等奖、区域赛一等奖。</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">科研经历</h2>
+      <div class="company">
+        <div class="company-name project-heading-accent">SGP_LOC · GNSS 拒止环境下的持续语义 LiDAR 定位 · Owner <span class="project-links"><a href="https://github.com/PeiXinYang-IST/SGP_LOC">项目代码</a></span></div>
+        <div class="company-meta">2025.06 - 2025.10</div>
+      </div>
+      <article class="project">
+        <ul>
+          <li><strong>系统设计：</strong>将 one-shot 绝对位姿重构为异步全局先验候选；前端经语义分类体素化与加权 ICP 维护连续里程计，并由末次迭代 Hessian 估计协方差；后端使用 iSAM2 融合经验证的全局约束。</li>
+          <li><strong>粒子语义验证：</strong>在候选位姿的有界邻域采样粒子，以同标签 scan-to-map 对应和弱垂直残差评分，联合估计位姿修正、协方差与置信度。</li>
+          <li><strong>时延补偿与图准入：</strong>沿缓存里程计链传播历史先验并累积协方差，通过 xy–yaw 99% 卡方一致性门控后接入因子图，抑制重复城市结构中的错误重定位。</li>
+          <li><strong>实验结果：</strong>在 MulRan / HeLiPR 的 10 条 <strong>5.2–9.3 km</strong> 跨时段序列（最长间隔 138 天）上，以 5 m / 10° 为判据实现 <strong>96.64%–100.00%</strong> 的连续定位成功率；Roundabout02 达 99.42%，显著高于最佳 one-shot 基线的 58.76%。</li>
+          <li><strong>消融与运行效率：</strong>Roundabout 消融中将 yaw 误差中位值 / 最大值从 2.78° / 27.02° 降至 <strong>0.93° / 4.38°</strong>；在 20,455 帧、38 分钟在线运行中，里程计平均耗时 39.5 ms，系统平均耗时 48.8 ms，异步后端不阻塞位姿发布，峰值内存 2.31 GB。</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">专业技能</h2>
+      <div class="skills-block">
+        <div><strong>编程与工程：</strong>C++、Python、MATLAB｜ROS / ROS2、Linux、Docker、Git、CMake｜Eigen、PCL、CUDA</div>
+        <div><strong>规划与优化：</strong>A*、JPS、Hybrid A*、RRT / Informed RRT*｜ESDF / SFC、MINCO、Minimum Snap / Jerk、L-BFGS</div>
+        <div><strong>控制与动力学：</strong>PID、LQR、MPC / LPV-MPC / LMPC / NMPC、ESO</div>
+        <div><strong>状态估计与定位：</strong>ESKF、多传感器融合、LiDAR 里程计、语义 SLAM｜GTSAM / iSAM2、图优化</div>
+        <div><strong>机器人学习与仿真：</strong>Isaac Gym、MuJoCo、Gazebo</div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    (() => {
+      const pageMode = document.querySelector('#pageMode');
+      const modeStorageKey = 'asu-resume-page-mode';
+      const contentStoragePrefix = 'yang-peixin-resume-polished-v1';
+      const sheets = Array.from(document.querySelectorAll('main.sheet[contenteditable="true"]'));
+      const saveStatus = document.querySelector('#saveStatus');
+      let saveTimer = null;
+
+      const setSaveStatus = (text) => {
+        if (saveStatus) saveStatus.textContent = text;
+      };
+      const getStoredValue = (key) => {
+        try {
+          return localStorage.getItem(key);
+        } catch (error) {
+          return null;
+        }
+      };
+      const setStoredValue = (key, value) => {
+        try {
+          localStorage.setItem(key, value);
+          return true;
+        } catch (error) {
+          setSaveStatus('自动保存不可用');
+          return false;
+        }
+      };
+      const hashText = (text) => {
+        let hash = 2166136261;
+        for (let index = 0; index < text.length; index += 1) {
+          hash ^= text.charCodeAt(index);
+          hash = Math.imul(hash, 16777619);
+        }
+        return (hash >>> 0).toString(16);
+      };
+      const contentStorageKey = `${contentStoragePrefix}-${hashText(window.location.href)}`;
+      const templateHash = hashText(JSON.stringify(sheets.map((sheet) => sheet.innerHTML)));
+      const restoreSavedContent = () => {
+        const raw = getStoredValue(contentStorageKey);
+        if (!raw) return;
+        try {
+          const saved = JSON.parse(raw);
+          if (saved.templateHash !== templateHash || !Array.isArray(saved.sheets) || saved.sheets.length !== sheets.length) {
+            setSaveStatus('模板已更新，未恢复旧内容');
+            return;
+          }
+          sheets.forEach((sheet, index) => {
+            if (typeof saved.sheets[index] === 'string') sheet.innerHTML = saved.sheets[index];
+          });
+          setSaveStatus('已恢复上次编辑');
+        } catch (error) {
+          setSaveStatus('自动保存已开启');
+        }
+      };
+      const saveContent = () => {
+        if (!sheets.length) return;
+        const saved = setStoredValue(contentStorageKey, JSON.stringify({
+          version: 2,
+          templateHash,
+          sheets: sheets.map((sheet) => sheet.innerHTML),
+          savedAt: new Date().toISOString()
+        }));
+        if (saved) setSaveStatus('已自动保存');
+      };
+      const scheduleSave = () => {
+        setSaveStatus('保存中...');
+        window.clearTimeout(saveTimer);
+        saveTimer = window.setTimeout(saveContent, 350);
+      };
+
+      restoreSavedContent();
+      sheets.forEach((sheet) => sheet.addEventListener('input', scheduleSave));
+      window.addEventListener('beforeunload', saveContent);
+
+      const photoSlot = document.querySelector('.profile-photo-slot');
+      const photoInput = photoSlot?.querySelector('.photo-input');
+      const openPhotoPicker = () => photoInput?.click();
+      photoSlot?.addEventListener('click', (event) => {
+        if (event.target !== photoInput) openPhotoPicker();
+      });
+      photoSlot?.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openPhotoPicker();
+        }
+      });
+      photoInput?.addEventListener('change', (event) => {
+        const [file] = event.target.files || [];
+        if (!file || !file.type.startsWith('image/')) return;
+        const reader = new FileReader();
+        reader.addEventListener('load', () => {
+          let photo = photoSlot.querySelector('.profile-photo');
+          if (!photo) {
+            photo = document.createElement('img');
+            photo.className = 'profile-photo';
+            photo.alt = '证件照';
+            photoSlot.prepend(photo);
+          }
+          photo.src = reader.result;
+          photoSlot.querySelector('.photo-placeholder')?.remove();
+          photoSlot.classList.add('has-photo');
+          scheduleSave();
+        });
+        reader.readAsDataURL(file);
+      });
+
+      const applyMode = (mode) => {
+        document.body.dataset.pageMode = mode;
+        pageMode.value = mode;
+      };
+      applyMode(getStoredValue(modeStorageKey) || 'paged');
+      pageMode.addEventListener('change', () => {
+        applyMode(pageMode.value);
+        setStoredValue(modeStorageKey, pageMode.value);
+      });
+
+      const editorSelector = '[contenteditable="true"]';
+      const getElement = (node) => node && (node.nodeType === 1 ? node : node.parentElement);
+      const isEditorSelection = (node) => {
+        const element = getElement(node);
+        return Boolean(element && element.closest(editorSelector) && !element.closest('.toolbar'));
+      };
+      let savedRange = null;
+      document.addEventListener('selectionchange', () => {
+        const selection = window.getSelection();
+        if (selection.rangeCount && isEditorSelection(selection.anchorNode) && isEditorSelection(selection.focusNode)) {
+          savedRange = selection.getRangeAt(0).cloneRange();
+        }
+      });
+
+      const restoreSelection = () => {
+        if (!savedRange) return false;
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(savedRange);
+        return true;
+      };
+      const runCommand = (command, value = null) => {
+        if (!restoreSelection()) return;
+        document.execCommand(command, false, value);
+        scheduleSave();
+      };
+
+      document.querySelectorAll('.tool-button[data-command]').forEach((button) => {
+        button.addEventListener('mousedown', (event) => event.preventDefault());
+        button.addEventListener('click', () => runCommand(button.dataset.command));
+      });
+
+      const fontFamilies = {
+        simhei: 'SimHei, 黑体, Microsoft YaHei, sans-serif',
+        yahei: 'Microsoft YaHei, sans-serif',
+        simsun: 'SimSun, 宋体, serif',
+        times: 'Times New Roman, serif',
+        arial: 'Arial, sans-serif'
+      };
+      document.querySelector('#fontFamily').addEventListener('change', (event) => {
+        runCommand('fontName', fontFamilies[event.target.value]);
+      });
+
+      const applyInlineStyle = (property, value) => {
+        if (!restoreSelection()) return;
+        const selection = window.getSelection();
+        if (!selection.rangeCount || selection.isCollapsed) return;
+        const range = selection.getRangeAt(0);
+        const wrapper = document.createElement('span');
+        wrapper.style[property] = value;
+        wrapper.appendChild(range.extractContents());
+        range.insertNode(wrapper);
+        const newRange = document.createRange();
+        newRange.selectNodeContents(wrapper);
+        selection.removeAllRanges();
+        selection.addRange(newRange);
+        savedRange = newRange.cloneRange();
+        scheduleSave();
+      };
+      document.querySelector('#fontSize').addEventListener('change', (event) => {
+        applyInlineStyle('fontSize', event.target.value);
+      });
+      document.querySelector('#textColor').addEventListener('input', (event) => {
+        runCommand('foreColor', event.target.value);
+      });
+    })();
+  </script>
+</body>
+</html>
