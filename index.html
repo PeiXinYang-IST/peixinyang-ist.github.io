@@ -748,7 +748,7 @@
         <a href="#research">Research</a>
         <a href="#background">Background</a>
         <a href="#contact">Contact</a>
-        <a class="nav-cv" href="assets/Yang_Peixin_Resume.pdf.pdf" target="_blank" rel="noreferrer">CV</a>
+        <a class="nav-cv" href="assets/Yang_Peixin_Resume.pdf" target="_blank" rel="noreferrer">CV</a>
       </div>
     </div>
   </nav>
@@ -775,7 +775,7 @@
             <a href="mailto:2429697526@qq.com">Email</a>
             <a href="https://github.com/PeiXinYang-IST" target="_blank" rel="noreferrer">GitHub</a>
             <a href="https://space.bilibili.com/646213110?spm_id_from=333.1007.0.0" target="_blank" rel="noreferrer">Bilibili Demos</a>
-            <a href="assets/Yang_Peixin_Resume.pdf.pdf" target="_blank" rel="noreferrer">Curriculum Vitae</a>
+            <a href="assets/Yang_Peixin_Resume.pdf" target="_blank" rel="noreferrer">Curriculum Vitae</a>
           </div>
         </div>
 
@@ -812,7 +812,7 @@
             <div class="project-content">
               <span class="project-index">01 / Humanoid Robotics</span>
               <h3>Humanoid Robot Planning &amp; Control</h3>
-              <p class="project-meta">Core algorithm lead · Oak Creek · Jan 2026 — Apr 2026</p>
+              <p class="project-meta">Core algorithm lead · Oak Creek / Songyan Dynamics · Jan 2026 — Apr 2026</p>
               <p class="project-abstract">
                 A real-time planning and control stack for humanoid marathon navigation,
                 spanning local trajectory generation, safe-corridor constraints, an
@@ -848,7 +848,7 @@
 
             <div class="project-content">
               <span class="project-index">02 / Learning-based Control</span>
-              <h3>Wheel-Legged Robot RL Control</h3>
+              <h3>Wheel-Legged Robot Whole-Body Control &amp; Autonomous Navigation</h3>
               <p class="project-meta">Algorithm &amp; electronics lead · Oct 2025 — Present</p>
               <p class="project-abstract">
                 A blind-locomotion control stack for a compact wheel-legged robot,
@@ -858,7 +858,8 @@
               <ul class="project-contributions">
                 <li>Derived Newton–Euler full-body dynamics and built a leg-length-scheduled LPV-MPC model to optimize constrained control across changing robot configurations.</li>
                 <li>Used a TCN over proprioceptive history for blind state representation and velocity estimation, then trained terrain-robust locomotion policies with PPO.</li>
-                <li>Trained in Isaac Gym, validated in MuJoCo, deployed to STM32H7, and used PACE + CMA-ES to identify motor and joint dynamics from sim-to-real response error.</li>
+                <li>Trained in Isaac Gym, validated in MuJoCo, deployed to STM32H7 with 0.6 ms policy inference, and used real-to-sim identification and dynamics fitting to recover key motor and joint parameters.</li>
+                <li>Exploring a World–Action planner with privileged-planner demonstrations, Future Depth / Trajectory Action dual streams, bidirectional cross-attention, and a frozen Wan2.2 VAE for 2 s future-trajectory generation.</li>
               </ul>
               <p class="project-result"><strong>Outcome:</strong> velocity-estimation error below 0.05 m/s under strong disturbances and 0.6 ms policy inference on STM32H7.</p>
               <div class="project-footer">
@@ -881,7 +882,7 @@
             <div class="project-content">
               <span class="project-index">03 / Semantic Localization</span>
               <h3>Persistent LiDAR Global Localization</h3>
-              <p class="project-meta">Algorithm design &amp; implementation · Jun 2025 — Mar 2026</p>
+              <p class="project-meta">Owner · Jun 2025 — Oct 2025</p>
               <p class="project-abstract">
                 A persistent semantic LiDAR localization framework for GNSS-denied
                 urban driving that treats delayed one-shot hypotheses as global-prior
@@ -895,7 +896,6 @@
               <p class="project-result"><strong>Outcome:</strong> 96.64%–100% success at 5 m / 10° across ten MulRan and HeLiPR query sequences; on the HeLiPR Roundabout ablation, persistent fusion reduced median / maximum yaw error from 2.78° / 27.02° to 0.93° / 4.38°.</p>
               <div class="project-footer">
                 <span class="project-tags">Semantic ICP · Particle Verification · Latency Compensation · Factor Graph · GTSAM / iSAM2</span>
-                <a class="text-link" href="https://github.com/PeiXinYang-IST/SGP_LOC" target="_blank" rel="noreferrer">Code</a>
               </div>
             </div>
           </article>
@@ -921,9 +921,10 @@
                 optimization, and constrained chassis control.
               </p>
               <ul class="project-contributions">
-                <li>Integrated wheel-odometry prediction and LiDAR scan-matching observations in a tightly coupled ESKF.</li>
+                <li>Added wheel-speed observations to the LIO ESKF update, providing velocity constraints during LiDAR degeneracy and hard impacts to suppress short-term drift and state divergence.</li>
                 <li>Combined iVOX hash-based nearest-neighbor search with improved JPS, keeping 3D safe-corridor construction below 5 ms in complex scenes.</li>
-                <li>Generated high-order continuous collision-free trajectories using MINCO and L-BFGS, then tracked them with an LMPC enforcing power and wheel-speed constraints.</li>
+                <li>Generated high-order continuous collision-free trajectories using MINCO and L-BFGS in under 5 ms at 50 Hz, then tracked them with an LMPC enforcing power and wheel-speed constraints, solving in under 2 ms at a 100 Hz closed loop.</li>
+                <li>Developed STM32 low-level chassis control with CAN motor commands, encoder feedback, host–controller state exchange, timeout handling, and loss-of-link stopping.</li>
               </ul>
               <p class="project-result"><strong>Outcome:</strong> 3D safe-corridor construction under 5 ms; RoboMaster regional first prize and national second prize.</p>
               <div class="project-footer">
@@ -948,18 +949,18 @@
             </div>
 
             <div class="project-content">
-              <span class="project-index">05 / Robot Modeling &amp; RL Control</span>
-              <h3>UMV Bicycle Robot Model &amp; Motion Control</h3>
-              <p class="project-meta">Modeling &amp; control · Sep 2026 — Present</p>
+              <span class="project-index">05 / Robot Modeling &amp; Skill Learning</span>
+              <h3>UMV Novel-Configuration Robot Modeling, Simulation &amp; Skill Learning</h3>
+              <p class="project-meta">Modeling, simulation &amp; learning · Sep 2026 — Present</p>
               <p class="project-abstract">
-                An open-source, simulation-ready reconstruction of an underactuated
-                bicycle robot, connecting image-based 3D modeling and URDF engineering
-                with reinforcement-learning control for balance and dynamic skills.
+                An end-to-end exploration of a novel underactuated robot configuration,
+                spanning image-based reconstruction, URDF and control-interface design,
+                simulation training environments, and learned dynamic skills.
               </p>
               <ul class="project-contributions">
-                <li>Built a simplified six-link, five-joint model through multi-view generation and Blender assembly, with joint frames, inertial properties, visual meshes, and low-complexity collision geometry.</li>
-                <li>Formulated balance and velocity tracking as a constrained PPO task: proprioception and motion commands drive steering, head/neck position targets, and rear-wheel velocity through low-level PD control.</li>
-                <li>Combined task and motion-regularization rewards with hard safety terminations, curriculum learning, dynamics randomization, 3D stunt guidelines, and iterative motion imitation.</li>
+                <li>Reconstructed and released a simplified six-link, five-joint URDF through Tripo and Blender, with a passive front wheel, steering and head/neck position PD, and rear-wheel velocity interfaces.</li>
+                <li>Built the complete configuration-driven RL pipeline, from URDF joint definitions and actuator interfaces to PPO observations, actions, rewards, and the simulation training environment.</li>
+                <li>Learned jump and flip skills from 3D guide lines and key poses using reference-state initialization, iterative motion imitation, and policy-rollout reference updates.</li>
               </ul>
               <p class="project-result"><strong>Outcome:</strong> Released the editable Blender scene, URDF, visual and collision meshes, and package-integrity checks for simulation development.</p>
               <div class="project-footer">
@@ -1030,7 +1031,7 @@
             <article class="timeline-row">
               <div class="timeline-date">2026</div>
               <div>
-                <h3>Oak Creek · PNC Engineer</h3>
+                <h3>Oak Creek / Songyan Dynamics · PNC Engineer</h3>
                 <p>Developed the lattice planning, safe-corridor, and NMPC stack for a humanoid robot.</p>
               </div>
             </article>
@@ -1047,24 +1048,24 @@
           <aside class="skills" aria-label="Technical skills">
             <h3>Technical toolkit</h3>
             <div class="skill-row">
-              <strong>Planning</strong>
-              <span>A*, JPS, Hybrid A*, RRT*, MINCO</span>
+              <strong>Robot planning</strong>
+              <span>A* / JPS / Hybrid A* / RRT* / MINCO / SFC / L-BFGS</span>
             </div>
             <div class="skill-row">
-              <strong>Control &amp; optimization</strong>
-              <span>NMPC, MPC, LQR, Acados, OSQP, IPOPT</span>
+              <strong>State estimation</strong>
+              <span>ESKF / LiDAR Odometry / Multi-Sensor Fusion / iSAM2</span>
             </div>
             <div class="skill-row">
-              <strong>Estimation &amp; learning</strong>
-              <span>ESKF, factor graphs, PyTorch, PPO</span>
+              <strong>Control &amp; dynamics</strong>
+              <span>PID / LQR / MPC / NMPC / LPV-MPC / LMPC / ESO</span>
             </div>
             <div class="skill-row">
-              <strong>Systems</strong>
-              <span>C++, Python, ROS / ROS2, CUDA, Linux</span>
+              <strong>Robot learning</strong>
+              <span>VAE / DF / FM / RL Locomotion / Imitation Learning / Sim2Real</span>
             </div>
             <div class="skill-row">
-              <strong>Simulation</strong>
-              <span>Isaac Gym, MuJoCo, Gazebo</span>
+              <strong>Simulation &amp; engineering</strong>
+              <span>Isaac Gym / MuJoCo / ROS2 / C++ / Python / Linux / Docker</span>
             </div>
           </aside>
         </div>
@@ -1084,7 +1085,7 @@
             <a href="mailto:2429697526@qq.com">2429697526@qq.com</a>
             <a href="https://github.com/PeiXinYang-IST" target="_blank" rel="noreferrer">GitHub</a>
             <a href="https://space.bilibili.com/646213110?spm_id_from=333.1007.0.0" target="_blank" rel="noreferrer">Bilibili Demos</a>
-            <a href="assets/Yang_Peixin_Resume.pdf.pdf" target="_blank" rel="noreferrer">Curriculum Vitae</a>
+            <a href="assets/Yang_Peixin_Resume.pdf" target="_blank" rel="noreferrer">Curriculum Vitae</a>
           </div>
         </div>
       </div>
