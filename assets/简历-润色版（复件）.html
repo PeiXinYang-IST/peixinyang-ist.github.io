@@ -103,6 +103,7 @@
     .personal-section .section-title { margin-bottom: 1px; }
     .personal-description { font-size: 8.8pt; line-height: 1.12; white-space: nowrap; }
     @media print {
+      body { line-height: 1.52; }
       .sheet { padding-top: 3.5mm; padding-bottom: 3.5mm; }
       .section { margin-top: 3px; }
       .company { margin-top: 2px; }
@@ -174,17 +175,15 @@
     <section class="section">
       <h2 class="section-title">实习经历</h2>
       <div class="company">
-        <div class="company-name">北京橡树清溪科技公司 · PNC 工程师</div>
+        <div class="company-name">北京橡树清溪科技公司 · 松延动力 · PNC 工程师</div>
         <div class="company-meta">2026.01 - 2026.04</div>
       </div>
       <article class="project">
         <div class="project-title">人形机器人规划控制系统｜北京亦庄马拉松</div>
         <ul>
-          <li><strong>系统职责：</strong><strong>从 0 到 1</strong> 负责局部规划、安全走廊与 NMPC 跟踪控制链路的设计与实现，接入 10 Hz RTK 定位信号，支撑人形机器人在马拉松场景中的自主导航。</li>
-          <li><strong>Lattice 局部规划：</strong>基于栅格采样生成多条候选轨迹，结合碰撞检测与代价评估筛选可行路径。</li>
-          <li><strong>SFC 安全走廊：</strong>基于 OBB 收缩在局部坐标系生成矩形可通行域，将障碍信息转化为优化器可处理的约束。</li>
-          <li><strong>LPV 系统辨识：</strong>针对底层 RL locomotion 策略闭环的非最小相位与工况时变特性，基于指令—响应数据构建随工况调度的 LPV 预测模型，为上层 NMPC 提供动力学近似。</li>
-          <li><strong>NMPC 与扰动补偿：</strong>基于 Acados 开发实时非线性 MPC，单次求解约 <strong>2 ms</strong>；设计 ESO 补偿模型失配与外部扰动；室外连续运行数公里，横向控制误差稳定在 <strong>0.5 m 内</strong>。</li>
+          <li><strong>系统架构：</strong><strong>从 0 到 1</strong> 设计人形机器人自主导航链路并接入 10 Hz RTK；统一采用 <strong>Trajectory-Conditioned RL Locomotion</strong> 作为执行层，两套上层规划器均输出<strong>未来 4 s 显式轨迹</strong>。</li>
+          <li><strong>Model-Based Planner：</strong>基于 Lattice + OBB-SFC 构建局部可行域，针对 RL Locomotion 闭环辨识 LPV 模型，并以 Acados NMPC 优化未来 4 s 轨迹；结合 ESO 补偿模型失配，单次求解约 <strong>2 ms</strong>，室外连续运行数公里，横向误差稳定在 <strong>0.5 m 内</strong>。</li>
+          <li><strong>Learning-Based Planner：</strong>基于 PPO 直接输出<strong>未来 4 s 轨迹参数</strong>，通过 Frozen RL Locomotion 闭环 rollout 学习可执行轨迹，减少对精确动力学模型与人工代价设计的依赖。</li>
         </ul>
       </article>
     </section>
@@ -211,11 +210,10 @@
       </div>
       <article class="project">
         <ul>
-          <li><strong>融合定位：</strong>将轮速观测接入 LIO 的 ESKF 更新，为激光退化与剧烈冲击工况提供速度约束，抑制短时漂移与状态发散，实现<strong>高带宽、连续稳定定位</strong>。</li>
-          <li><strong>路径搜索与安全走廊：</strong>以 iVOX + 哈希映射实现近邻搜索，结合改进 JPS 完成前端路径搜索，将复杂环境平面安全走廊构建耗时控制在 <strong>5 ms 以内</strong>。</li>
-          <li><strong>轨迹优化与控制：</strong>采用 MINCO 参数化与 L-BFGS 非线性优化生成高阶连续、无碰撞轨迹，单次优化 <strong>&lt; 5 ms</strong>，规划频率 <strong>50 Hz</strong>；基于底盘动力学设计带功率和轮速约束的 LMPC，单次求解 <strong>&lt; 2 ms</strong>，实现 <strong>100 Hz</strong> 闭环跟踪。</li>
-          <li><strong>STM32 底盘下位机：</strong>开发底盘运动控制与通信链路，通过 CAN 完成电机指令下发和编码器反馈采集，对接上位机速度指令与底盘状态回传，并加入指令超时、失联停车等安全保护。</li>
-          <li><strong>竞赛结果：</strong>支撑队伍获得 RoboMaster 2025 超级对抗赛全国二等奖、区域赛一等奖。</li>
+          <li><strong>融合定位：</strong>将轮速观测引入 LIO-ESKF 更新，在激光退化与剧烈冲击工况下提供速度约束，提升定位连续性并抑制短时漂移。</li>
+          <li><strong>路径与轨迹规划：</strong>采用 JPS 完成前端搜索，并构建平面安全走廊；基于 MINCO + L-BFGS 生成高阶连续无碰轨迹，单次优化 &lt; 5 ms、规划频率 50 Hz。</li>
+          <li><strong>动力学控制：</strong>基于底盘动力学设计带功率与轮速约束的 LMPC，单次求解 &lt; 2 ms、闭环频率 100 Hz，实现高速轨迹跟踪。</li>
+          <li><strong>实机部署：</strong>完成 ROS2 上位机与 STM32 底盘控制链路，通过 CAN 下发电机指令并回传编码器状态，加入超时与失联停车保护；支撑队伍获得 RoboMaster 2025 全国二等奖、区域赛一等奖。</li>
         </ul>
       </article>
 
@@ -240,11 +238,10 @@
       </div>
       <article class="project">
         <ul>
-          <li><strong>系统设计：</strong>将 one-shot 绝对位姿重构为异步全局先验候选；前端经语义分类体素化与加权 ICP 维护连续里程计，并由末次迭代 Hessian 估计协方差；后端使用 iSAM2 融合经验证的全局约束。</li>
-          <li><strong>粒子语义验证：</strong>在候选位姿的有界邻域采样粒子，以同标签 scan-to-map 对应和弱垂直残差评分，联合估计位姿修正、协方差与置信度。</li>
-          <li><strong>时延补偿与图准入：</strong>沿缓存里程计链传播历史先验并累积协方差，通过 xy–yaw 99% 卡方一致性门控后接入因子图，抑制重复城市结构中的错误重定位。</li>
-          <li><strong>实验结果：</strong>在 MulRan / HeLiPR 的 10 条 <strong>5.2–9.3 km</strong> 跨时段序列（最长间隔 138 天）上，以 5 m / 10° 为判据实现 <strong>96.64%–100.00%</strong> 的连续定位成功率；Roundabout02 达 99.42%，显著高于最佳 one-shot 基线的 58.76%。</li>
-          <li><strong>消融与运行效率：</strong>Roundabout 消融中将 yaw 误差中位值 / 最大值从 2.78° / 27.02° 降至 <strong>0.93° / 4.38°</strong>；在 20,455 帧、38 分钟在线运行中，里程计平均耗时 39.5 ms，系统平均耗时 48.8 ms，异步后端不阻塞位姿发布，峰值内存 2.31 GB。</li>
+          <li><strong>系统架构：</strong>面向 GNSS 拒止下的机器人长期自主运行，设计持续式 LiDAR 全局定位框架；以前端语义 LiDAR 里程计维持连续运动估计，并将单次全局定位结果作为候选约束，经验证后接入后端因子图。</li>
+          <li><strong>鲁棒定位：</strong>结合语义一致性、局部几何匹配与轨迹连续性验证全局位姿，并对异步定位结果进行时延补偿与一致性筛选，抑制重复结构、遮挡和误匹配导致的位姿跳变。</li>
+          <li><strong>实验结果：</strong>在 MulRan / HeLiPR 共 10 条 <strong>5.2–9.3 km</strong> 跨时段序列上实现 <strong>96.64%–100.00%</strong> 的连续定位成功率；Roundabout02 达 <strong>99.42%</strong>，显著高于最佳单次定位基线的 <strong>58.76%</strong>。</li>
+          <li><strong>实时性能：</strong>完成 <strong>20,455 帧 / 38 min</strong> 在线运行测试，系统平均耗时 <strong>48.8 ms</strong>，异步后端不阻塞机器人实时位姿输出。</li>
         </ul>
       </article>
     </section>
@@ -255,7 +252,8 @@
         <div><strong>机器人规划：</strong>A* / JPS / Hybrid A* / RRT* / MINCO / SFC / L-BFGS</div>
         <div><strong>状态估计：</strong>ESKF / LiDAR Odometry / Multi-Sensor Fusion / iSAM2</div>
         <div><strong>控制与动力学：</strong>PID / LQR / MPC / NMPC / LPV-MPC / LMPC / ESO</div>
-        <div><strong>机器人学习：</strong>VAE / DF / FM / RL Locomotion / Imitation Learning / Sim2Real</div>
+        <div><strong>机器人学习：</strong>PPO / RL Locomotion / VAE / Diffusion / Flow Matching / Sim2Real</div>
+        <div><strong>嵌入式与通信：</strong>STM32 / MCU 实时控制 / CAN / UART / 编码器与电机驱动 / 上下位机通信</div>
         <div><strong>仿真与工程：</strong>Isaac Gym / MuJoCo / ROS2 / C++ / Python / Linux / Docker</div>
       </div>
     </section>

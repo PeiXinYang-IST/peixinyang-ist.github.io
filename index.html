@@ -290,6 +290,11 @@
       object-fit: contain;
     }
 
+    .media-frame.track-video video {
+      aspect-ratio: 16 / 9;
+      object-fit: contain;
+    }
+
     .media-pair {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -800,7 +805,7 @@
                   <video src="pic/oak.mp4" controls muted playsinline preload="metadata" aria-label="Humanoid navigation planning visualization in RViz"></video>
                 </div>
                 <div class="media-frame portrait-video">
-                  <video src="pic/Planner.mp4" controls muted playsinline preload="metadata" aria-label="Humanoid robot real-world navigation demonstration"></video>
+                  <video src="pic/noetix_real2.mp4" controls muted playsinline preload="metadata" aria-label="Humanoid robot real-world navigation demonstration"></video>
                 </div>
               </div>
               <div class="media-caption">
@@ -810,22 +815,58 @@
             </div>
 
             <div class="project-content">
-              <span class="project-index">01 / Humanoid Robotics</span>
-              <h3>Humanoid Robot Planning &amp; Control</h3>
+              <span class="project-index">01 / Model-Based Planning &amp; Control</span>
+              <h3>Model-Based Humanoid Navigation &amp; Control</h3>
               <p class="project-meta">Core algorithm lead · Oak Creek · Jan 2026 — Apr 2026</p>
               <p class="project-abstract">
-                A real-time planning and control stack for humanoid marathon navigation,
-                spanning local trajectory generation, safe-corridor constraints, an
-                identified LPV prediction model, and disturbance-aware NMPC.
+                A model-based planning and control stack for humanoid marathon
+                navigation. Lattice search and safe corridors define feasible local
+                paths; LPV-based NMPC optimizes a four-second reference trajectory
+                for a trajectory-conditioned RL locomotion controller to execute.
               </p>
               <ul class="project-contributions">
-                <li>Generated and collision-checked lattice trajectory candidates, then ranked feasible paths online.</li>
+                <li>Integrated 10 Hz RTK localization with lattice trajectory generation and oriented-bounding-box safe flight corridors (OBB-SFC).</li>
                 <li>Identified an operating-point-scheduled LPV model from command–response data to approximate the non-minimum-phase, time-varying closed-loop behavior of the RL locomotion controller.</li>
                 <li>Developed an Acados NMPC controller with hyperplane obstacle constraints and approximately 2 ms solves; designed an ESO to estimate and compensate model mismatch and external disturbances.</li>
               </ul>
+              <p class="project-result"><strong>Real-world validation:</strong> Continuous outdoor navigation over several kilometers with lateral error within 0.5 m.</p>
               <div class="project-footer">
                 <span class="project-tags">Lattice · SFC · LPV · NMPC · ESO · Acados</span>
                 <a class="text-link" href="https://github.com/PeiXinYang-IST/NMPC_hyperplane" target="_blank" rel="noreferrer">Code</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-media">
+              <div class="media-frame track-video">
+                <video src="pic/g1_mixed_speed_path_40s.mp4" poster="pic/g1_mixed_speed_path_poster.jpg" controls muted playsinline preload="none" aria-label="G1 humanoid robot following a continuous mixed-speed path with straight running and turns"></video>
+              </div>
+              <div class="media-caption">
+                <span>Continuous mixed-speed path with acceleration and turns</span>
+                <span>MuJoCo · 40 s</span>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <span class="project-index">02 / Learning-Based Locomotion &amp; Control</span>
+              <h3>Learning-Based G1 Locomotion &amp; Trajectory Tracking</h3>
+              <p class="project-meta">MuJoCo simulation · 40 s path · 3.5–7.0 m/s targets · Oct 2026</p>
+              <p class="project-abstract">
+                A learned locomotion and trajectory-tracking controller combining a
+                pretrained Score-Matching Motion Prior (SMP) with a
+                trajectory-conditioned policy trained using PPO. The
+                policy follows a rolling two-second reference trajectory, combining
+                straight acceleration up to 7 m/s with left and right turns in MuJoCo.
+              </p>
+              <ul class="project-contributions">
+                <li>Conditioned the policy on eight future trajectory points to coordinate speed changes and turning.</li>
+                <li>Used a training curriculum that progressively reduces the motion-prior reward weight, relaxing imitation constraints as speed demands increase while keeping SMP frozen.</li>
+              </ul>
+              <p class="project-result"><strong>Result:</strong> Trajectory-tracking position error within 0.2 m in the demonstrated mixed-speed MuJoCo run.</p>
+              <div class="project-footer">
+                <span class="project-tags">SMP · PPO · Trajectory Conditioning · Curriculum Learning · MuJoCo</span>
+                <a class="text-link" href="pic/g1_mixed_speed_path_40s.mp4" target="_blank" rel="noreferrer">Full video</a>
               </div>
             </div>
           </article>
@@ -847,7 +888,7 @@
             </div>
 
             <div class="project-content">
-              <span class="project-index">02 / Learning-based Control</span>
+              <span class="project-index">03 / Learning-based Control</span>
               <h3>Wheel-Legged Robot Whole-Body Control &amp; Autonomous Navigation</h3>
               <p class="project-meta">Algorithm &amp; electronics lead · Oct 2025 — Present</p>
               <p class="project-abstract">
@@ -880,7 +921,7 @@
             </div>
 
             <div class="project-content">
-              <span class="project-index">03 / Semantic Localization</span>
+              <span class="project-index">04 / Semantic Localization</span>
               <h3>Persistent LiDAR Global Localization</h3>
               <p class="project-meta">Owner · Jun 2025 — Oct 2025</p>
               <p class="project-abstract">
@@ -912,7 +953,7 @@
             </div>
 
             <div class="project-content">
-              <span class="project-index">04 / Autonomous Navigation</span>
+              <span class="project-index">05 / Autonomous Navigation</span>
               <h3>MID360 LiDAR Navigation for RoboMaster</h3>
               <p class="project-meta">Navigation lead · RoboMaster 2025 · Sep 2024 — May 2025</p>
               <p class="project-abstract">
@@ -949,7 +990,7 @@
             </div>
 
             <div class="project-content">
-              <span class="project-index">05 / Robot Modeling &amp; Skill Learning</span>
+              <span class="project-index">06 / Robot Modeling &amp; Skill Learning</span>
               <h3>UMV Novel-Configuration Robot Modeling, Simulation &amp; Skill Learning</h3>
               <p class="project-meta">Modeling, simulation &amp; learning · Sep 2026 — Present</p>
               <p class="project-abstract">
